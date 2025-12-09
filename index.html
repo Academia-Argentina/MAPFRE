@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAPFRE - Seguros Argentina Roleplay</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <style>
+        /* ============================================
+           CONFIGURACIÓN GENERAL
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* COLORES PRINCIPALES - Puedes cambiarlos aquí */
+            --color-primary: #e60000;
+            --color-primary-dark: #b30000;
+            --color-secondary: #2c3e50;
+            --color-bg: #f5f5f5;
+            --color-white: #ffffff;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-border: #ddd;
+            --color-success: #27ae60;
+            --color-error: #e74c3c;
+            --color-warning: #f39c12;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           BARRA DE NAVEGACIÓN
+           ============================================ */
+        .navbar {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .navbar-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-menu {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .nav-btn {
+            background-color: transparent;
+            color: var(--color-white);
+            border: 2px solid var(--color-white);
+            padding: 0.6rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--color-white);
+            color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================
+           CONTENEDOR PRINCIPAL
+           ============================================ */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* ============================================
+           SECCIÓN HERO (INICIO)
+           ============================================ */
+        .hero-section {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: var(--color-white);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(230, 0, 0, 0.3);
+            animation: fadeIn 0.6s ease;
+        }
+
+        .hero-logo {
+            width: 150px;
+            height: auto;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .btn-primary {
+            background-color: var(--color-white);
+            color: var(--color-primary);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* ============================================
+           DASHBOARD
+           ============================================ */
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .dashboard-card {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .dashboard-card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .dashboard-card-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .dashboard-card-label {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+
+        /* ============================================
+           FILTROS
+           ============================================ */
+        .filters-section {
+            background: var(--color-white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            align-items: end;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--color-text);
+        }
+
+        .filter-input {
+            padding: 0.7rem;
+            border: 2px solid var(--color-border);
+            border-radius: 5px;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .filter-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .btn-filter {
+            background-color: var(--color-secondary);
+            color: var(--color-white);
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-filter:hover {
+            background-color: #34495e;
+        }
+
+        /* ============================================
+           SECCIÓN DE SEGUROS
+           ============================================ */
+        .seguros-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-secondary);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--color-primary);
+        }
+
+        .seguros-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .seguro-card {
+            background: var(--color-white);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .seguro-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(230, 0, 0, 0.2);
+            border-color: var(--color-primary);
+        }
+
+        .seguro-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--color-bg);
+        }
+
+        .seguro-photo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--color-primary);
+        }
+
+        .seguro-info {
+            flex: 1;
+        }
+
+        .seguro-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--color-secondary);
+            margin-bottom: 0.3rem;
+        }
+
+        .seguro-type {
+            display: inline-block;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .seguro-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .seguro-detail-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+        }
+
+        .detail-label {
+            color: var(--color-text-light);
+            font-weight: 600;
+        }
+
+        .detail-value {
+            color: var(--color-text);
+            font-weight: 500;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--color-text-light);
+        }
+
+        .empty-state-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+
+        /* ============================================
+           MODAL
+           ============================================ */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.3);
+            animation: slideUp 0.4s ease;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--color-primary);
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-secondary);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--color-text-light);
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--color-primary);
+        }
+
+        /* ============================================
+           FORMULARIO
+           ============================================ */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--color-border);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .form-file {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px dashed var(--color-border);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-file:hover {
+            border-color: var(--color-primary);
+            background-color: rgba(230, 0, 0, 0.05);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-success {
+            background-color: var(--color-success);
+            color: var(--color-white);
+        }
+
+        .btn-success:hover {
+            background-color: #229954;
+            transform: translateY(-2px);
+        }
+
+        .btn-cancel {
+            background-color: var(--color-text-light);
+            color: var(--color-white);
+        }
+
+        .btn-cancel:hover {
+            background-color: #555;
+        }
+
+        .btn-danger {
+            background-color: var(--color-error);
+            color: var(--color-white);
+        }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+
+        /* ============================================
+           DETALLE DEL SEGURO
+           ============================================ */
+        .detail-photo {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            margin: 1rem auto;
+            display: block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .detail-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            background-color: var(--color-bg);
+            border-radius: 5px;
+        }
+
+        .detail-item-label {
+            font-weight: 700;
+            color: var(--color-secondary);
+        }
+
+        .detail-item-value {
+            color: var(--color-text);
+        }
+
+        /* ============================================
+           NOTIFICACIONES
+           ============================================ */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            z-index: 3000;
+            animation: slideInRight 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            min-width: 300px;
+        }
+
+        .notification.success {
+            background-color: var(--color-success);
+            color: var(--color-white);
+        }
+
+        .notification.error {
+            background-color: var(--color-error);
+            color: var(--color-white);
+        }
+
+        .notification.warning {
+            background-color: var(--color-warning);
+            color: var(--color-white);
+        }
+
+        /* ============================================
+           ANIMACIONES
+           ============================================ */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.8rem 1rem;
+            }
+
+            .navbar-menu {
+                gap: 0.5rem;
+            }
+
+            .nav-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .seguros-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+                width: 95%;
+            }
+
+            .filters-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ============================================
+         BARRA DE NAVEGACIÓN
+         ============================================ -->
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <!-- Cambiar "logo.png" por la ruta de tu imagen -->
+            <img src="logo.png" alt="Argentina Roleplay Logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23338AFF%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2230%22 font-weight=%22bold%22%3EARRP%3C/text%3E%3C/svg%3E'">
+            <span class="navbar-brand">MAPFRE</span>
+        </div>
+        <div class="navbar-menu">
+            <button class="nav-btn" onclick="goToHome()">Inicio</button>
+            <button class="nav-btn" onclick="openRegisterModal()">Registrar seguros</button>
+            <button class="nav-btn" onclick="scrollToSeguros()">Seguros publicados</button>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         CONTENIDO PRINCIPAL
+         ============================================ -->
+    <div class="container">
+        <!-- Sección Hero -->
+        <div class="hero-section">
+            <img src="logo.png" alt="Logo ARRP" class="hero-logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22150%22 height=%22150%22%3E%3Ccircle cx=%2275%22 cy=%2275%22 r=%2270%22 fill=%22%23338AFF%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2245%22 font-weight=%22bold%22%3EARRP%3C/text%3E%3C/svg%3E'">
+            <h1 class="hero-title">Bienvenido a MAPFRE</h1>
+            <p class="hero-subtitle">Seguros Argentina Roleplay</p>
+            <button class="btn-primary" onclick="openRegisterModal()">Registrar seguros</button>
+        </div>
+
+        <!-- Dashboard -->
+        <div class="dashboard" id="dashboard">
+            <div class="dashboard-card">
+                <div class="dashboard-card-icon">📋</div>
+                <div class="dashboard-card-value" id="totalSeguros">0</div>
+                <div class="dashboard-card-label">Total de Seguros</div>
+            </div>
+            <div class="dashboard-card">
+                <div class="dashboard-card-icon">🚗</div>
+                <div class="dashboard-card-value" id="totalVehiculos">0</div>
+                <div class="dashboard-card-label">Seguros de Vehículo</div>
+            </div>
+            <div class="dashboard-card">
+                <div class="dashboard-card-icon">💼</div>
+                <div class="dashboard-card-value" id="totalEmpresas">0</div>
+                <div class="dashboard-card-label">Seguros de Empresa</div>
+            </div>
+            <div class="dashboard-card">
+                <div class="dashboard-card-icon">🏠</div>
+                <div class="dashboard-card-value" id="totalResidencias">0</div>
+                <div class="dashboard-card-label">Seguros de Residencia</div>
+            </div>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filters-section">
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <label class="filter-label">Buscar por nombre</label>
+                    <input type="text" class="filter-input" id="filterName" placeholder="Nombre o apellido...">
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Tipo de seguro</label>
+                    <select class="filter-input" id="filterType">
+                        <option value="">Todos</option>
+                        <option value="Vehículo">Vehículo</option>
+                        <option value="Vida">Vida</option>
+                        <option value="Empresa">Empresa</option>
+                        <option value="Residencia">Residencia</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <button class="btn-filter" onclick="applyFilters()">Aplicar Filtros</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seguros Publicados -->
+        <div class="seguros-section" id="segurosSection">
+            <h2 class="section-title">Seguros Publicados</h2>
+            <div class="seguros-grid" id="segurosGrid">
+                <!-- Los seguros se cargarán aquí dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         MODAL DE CONTRASEÑA (REGISTRO)
+         ============================================ -->
+    <div id="passwordModal" class="modal">
+        <div class="modal-content" style="max-width: 400px;">
+            <div class="modal-header">
+                <h2 class="modal-title">Acceso Restringido</h2>
+                <button class="modal-close" onclick="closePasswordModal()">&times;</button>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Contraseña de Registro</label>
+                <input type="password" class="form-input" id="registerPassword" placeholder="Ingrese la contraseña">
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-success" onclick="validateRegisterPassword()">Acceder</button>
+                <button class="btn btn-cancel" onclick="closePasswordModal()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         MODAL DE FORMULARIO
+         ============================================ -->
+    <div id="formModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="formTitle">Registrar Seguro</h2>
+                <button class="modal-close" onclick="closeFormModal()">&times;</button>
+            </div>
+            <form id="seguroForm">
+                <input type="hidden" id="seguroId">
+                
+                <div class="form-group">
+                    <label class="form-label">Nombre *</label>
+                    <input type="text" class="form-input" id="nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Apellido *</label>
+                    <input type="text" class="form-input" id="apellido" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Número de Registro * (Formato: 123-456-78)</label>
+                    <input type="text" class="form-input" id="numeroRegistro" pattern="\d{3}-\d{3}-\d{2}" placeholder="123-456-78" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Tipo de Seguro *</label>
+                    <select class="form-select" id="tipoSeguro" required>
+                        <option value="">Seleccione...</option>
+                        <option value="Vehículo">Vehículo</option>
+                        <option value="Vida">Vida</option>
+                        <option value="Empresa">Empresa</option>
+                        <option value="Residencia">Residencia</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Fecha *</label>
+                    <input type="date" class="form-input" id="fecha" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Fecha de Vencimiento *</label>
+                    <input type="date" class="form-input" id="fechaVencimiento" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Foto del Ciudadano *</label>
+                    <input type="file" class="form-file" id="foto" accept="image/*" required>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                    <button type="button" class="btn btn-cancel" onclick="closeFormModal()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============================================
+         MODAL DE DETALLE
+         ============================================ -->
+    <div id="detailModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Detalle del Seguro</h2>
+                <button class="modal-close" onclick="closeDetailModal()">&times;</button>
+            </div>
+            <div id="detailContent"></div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         MODAL DE CONTRASEÑA (EDICIÓN)
+         ============================================ -->
+    <div id="editPasswordModal" class="modal">
+        <div class="modal-content" style="max-width: 400px;">
+            <div class="modal-header">
+                <h2 class="modal-title">Verificación de Edición</h2>
+                <button class="modal-close" onclick="closeEditPasswordModal()">&times;</button>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Contraseña de Edición</label>
+                <input type="password" class="form-input" id="editPassword" placeholder="Ingrese la contraseña">
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-success" onclick="validateEditPassword()">Acceder</button>
+                <button class="btn btn-cancel" onclick="closeEditPasswordModal()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* ============================================
+           CONFIGURACIÓN
+           ============================================ */
+        
+        // CLAVE DE LOCALSTORAGE - Puedes cambiarla aquí
+        const STORAGE_KEY = 'mapfre_seguro_db';
+        
+        // CONTRASEÑAS - Puedes cambiarlas aquí
+        const REGISTER_PASSWORD = 'MapfreEmpresa2025';
+        const EDIT_PASSWORD = 'EdicionSeg2025';
+
+        // Variable global para edición
+        let currentEditId = null;
+
+        /* ============================================
+           FUNCIONES DE NAVEGACIÓN
+           ============================================ */
+        
+        function goToHome() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToSeguros() {
+            document.getElementById('segurosSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        /* ============================================
+           GESTIÓN DE MODALES
+           ============================================ */
+        
+        function openRegisterModal() {
+            document.getElementById('passwordModal').classList.add('active');
+            document.getElementById('registerPassword').value = '';
+        }
+
+        function
