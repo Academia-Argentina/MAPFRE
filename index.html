@@ -12,10 +12,10 @@
     ============================================
     INSTRUCCIONES DE CONFIGURACIÓN:
     ============================================
-    1. LOGO: Reemplazar "logo.png" con tu archivo de imagen
-    2. CONTRASEÑAS (ver líneas 850-851):
+    1. LOGO: Reemplazar URL de imagen con tu archivo
+    2. CONTRASEÑAS:
        - Registro: MapfreEmpresa2025
-       - Edición: EdicionSeg2025
+       - Edición/Eliminación: EdicionSeg2025
     3. localStorage usa la clave: mapfre_seguro_db
     ============================================
     -->
@@ -709,7 +709,7 @@
             <div class="dashboard-card">
                 <div class="dashboard-card-icon">⏰</div>
                 <div class="dashboard-card-value" id="totalVencen">0</div>
-                <div class="dashboard-card-label">Vencen en 30 días</div>
+                <div class="dashboard-card-label">Vencen en poco tiempo</div>
             </div>
         </div>
 
@@ -856,6 +856,27 @@
         </div>
     </div>
 
+    <!-- ============================================
+         MODAL DE CONTRASEÑA (ELIMINACIÓN)
+         ============================================ -->
+    <div id="deletePasswordModal" class="modal" role="dialog" aria-labelledby="deletePasswordModalTitle" aria-modal="true">
+        <div class="modal-content" style="max-width: 400px;">
+            <div class="modal-header">
+                <h2 class="modal-title" id="deletePasswordModalTitle">Verificación de Eliminación</h2>
+                <button class="modal-close" id="closeDeletePasswordModal" aria-label="Cerrar">&times;</button>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="deletePassword">Contraseña de Edición</label>
+                <input type="password" class="form-input" id="deletePassword" placeholder="Ingrese la contraseña">
+                <p style="color: var(--color-error); font-size: 0.9rem; margin-top: 0.5rem;">⚠️ Esta acción no se puede deshacer</p>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-danger" id="validateDeletePasswordBtn">Confirmar Eliminación</button>
+                <button class="btn btn-cancel" id="cancelDeletePasswordBtn">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         /* ============================================
            CONFIGURACIÓN
@@ -865,6 +886,7 @@
         const EDIT_PASSWORD = 'EdicionSeg2025';
 
         let currentEditId = null;
+        let currentDeleteId = null;
         let seguros = [];
 
         /* ============================================
@@ -905,6 +927,11 @@
             document.getElementById('validateEditPasswordBtn').addEventListener('click', validateEditPassword);
             document.getElementById('cancelEditPasswordBtn').addEventListener('click', closeEditPasswordModal);
 
+            // Modal de contraseña eliminación
+            document.getElementById('closeDeletePasswordModal').addEventListener('click', closeDeletePasswordModal);
+            document.getElementById('validateDeletePasswordBtn').addEventListener('click', validateDeletePassword);
+            document.getElementById('cancelDeletePasswordBtn').addEventListener('click', closeDeletePasswordModal);
+
             // Filtros en tiempo real
             document.getElementById('filterName').addEventListener('input', applyFilters);
             document.getElementById('filterType').addEventListener('change', applyFilters);
@@ -916,6 +943,9 @@
             document.getElementById('editPassword').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') validateEditPassword();
             });
+            document.getElementById('deletePassword').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') validateDeletePassword();
+            });
 
             // ESC para cerrar modales
             document.addEventListener('keydown', function(e) {
@@ -924,6 +954,7 @@
                     closeFormModal();
                     closeDetailModal();
                     closeEditPasswordModal();
+                    closeDeletePasswordModal();
                 }
             });
 
@@ -934,6 +965,7 @@
                     closeFormModal();
                     closeDetailModal();
                     closeEditPasswordModal();
+                    closeDeletePasswordModal();
                 }
             });
         }
@@ -1051,6 +1083,17 @@
             currentEditId = null;
         }
 
+        function openDeletePasswordModal() {
+            document.getElementById('deletePasswordModal').classList.add('active');
+            document.getElementById('deletePassword').value = '';
+            document.getElementById('deletePassword').focus();
+        }
+
+        function closeDeletePasswordModal() {
+            document.getElementById('deletePasswordModal').classList.remove('active');
+            currentDeleteId = null;
+        }
+
         /* ============================================
            VALIDACIÓN DE CONTRASEÑAS
            ============================================ */
@@ -1081,6 +1124,26 @@
                 showToast('Contraseña incorrecta', 'error');
                 document.getElementById('editPassword').value = '';
                 document.getElementById('editPassword').focus();
+            }
+        }
+
+        function validateDeletePassword() {
+            const password = document.getElementById('deletePassword').value;
+            
+            if (password === EDIT_PASSWORD) {
+                closeDeletePasswordModal();
+                // Proceder con la eliminación
+                seguros = seguros.filter(s => s.id !== currentDeleteId);
+                saveSeguros();
+                renderSeguros();
+                updateDashboard();
+                closeDetailModal();
+                showToast('Seguro eliminado exitosamente', 'success');
+                currentDeleteId = null;
+            } else {
+                showToast('Contraseña incorrecta', 'error');
+                document.getElementById('deletePassword').value = '';
+                document.getElementById('deletePassword').focus();
             }
         }
 
@@ -1179,14 +1242,8 @@
         }
 
         function handleDelete(id) {
-            if (confirm('¿Está seguro de que desea eliminar este seguro? Esta acción no se puede deshacer.')) {
-                seguros = seguros.filter(s => s.id !== id);
-                saveSeguros();
-                renderSeguros();
-                updateDashboard();
-                closeDetailModal();
-                showToast('Seguro eliminado exitosamente', 'success');
-            }
+            currentDeleteId = id;
+            openDeletePasswordModal();
         }
 
         /* ============================================
@@ -1309,5 +1366,3 @@
     </script>
 </body>
 </html>
-
-
