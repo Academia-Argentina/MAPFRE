@@ -1,1200 +1,499 @@
-<!DOCTYPE html>
-<html class="dark" lang="en">
+<!doctype html>
+<html lang="es">
 <head>
-	<meta charset="utf-8">
-	<meta content="width=device-width, initial-scale=1" name="viewport">
-	<link href="/_next/static/media/0e9d289c6eb42bf7-s.p.woff2" rel="preload" type="font/woff2">
-	<link href="/_next/static/media/46bdd75a3ff56824-s.p.woff2" rel="preload" type="font/woff2">
-	<link data-precedence="next" href="/_next/static/css/416ecb03a6d5e87c.css" rel="stylesheet">
-	<link data-precedence="next" href="/_next/static/css/2f9e414a1a773844.css" rel="stylesheet">
-	<link data-precedence="next" href="/_next/static/css/ba4e0c7f3070082d.css" rel="stylesheet">
-	<link data-precedence="next" href="/_next/static/css/08e78f16145911c4.css" rel="stylesheet">
-	<link href="/_next/static/chunks/webpack-6b8446038fb6a32a.js" rel="preload">
-	<script async src="/_next/static/chunks/892aa5a2-c5650bc636b395f8.js">
-	</script>
-	<script async src="/_next/static/chunks/885-bb3f58152da4ac58.js">
-	</script>
-	<script async src="/_next/static/chunks/main-app-980e4aa50f23c654.js">
-	</script>
-	<script async src="/_next/static/chunks/556-9132c3a3470eb08e.js">
-	</script>
-	<script async src="/_next/static/chunks/294-b09f02b94f6729d6.js">
-	</script>
-	<script async src="/_next/static/chunks/630-e54cd51aa2a7fe79.js">
-	</script>
-	<script async src="/_next/static/chunks/679-f921a3a5125310a4.js">
-	</script>
-	<script async src="/_next/static/chunks/701-a5c67da14ceff8ed.js">
-	</script>
-	<script async src="/_next/static/chunks/408-2da0e2e2e48df6be.js">
-	</script>
-	<script async src="/_next/static/chunks/app/page-ea486633d6950d25.js">
-	</script>
-	<script async src="/_next/static/chunks/app/layout-bd2c202d14238cc9.js">
-	</script>
-	<title>Puro Chile RP - Servidor de Roleplay</title>
-	<meta content="Únete a la mejor experiencia de roleplay en Chile. Servidor de Roblox con normativas claras y comunidad activa." name="description">
-	<meta content="v0.app" name="generator">
-	<meta name="next-size-adjust">
-	<script src="/_next/static/chunks/polyfills-42372ed130431b0a.js">
-	</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Argentina RP ┊ ER:LC</title>
+
+  <!-- ==== ICONO / FAVICON ==== 
+       Reemplaza "ruta/a/tu-favicon.png" con la URL o ruta local de la imagen que querés usar -->
+  <link rel="icon" href="https://images-ext-1.discordapp.net/external/KqfyaYjeenvTHeaybPox0LT-APjdtSX-RoFyrrlZsfs/%3Fsize%3D4096/https/cdn.discordapp.com/avatars/1255946816898207834/18a5536133ff77c46881558ccbc4ff0b.png?format=webp&quality=lossless&width=527&height=527" />
+
+  <!-- Estilos -->
+  <style>
+    :root{
+      --bg:#0b0f16;
+      --card:#0f1720;
+      --muted:#9aa4b2;
+      --accent:#ff6b35; /* color de acento (cambiá si querés) */
+      --glass: rgba(255,255,255,0.03);
+      --glass-2: rgba(255,255,255,0.02);
+      --radius: 14px;
+      --max-width: 1100px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    html,body{height:100%; margin:0; background:var(--bg); color:#e6eef6; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+    a{color:inherit; text-decoration:none}
+
+    /* Contenedor principal centrado */
+    .container{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:24px;
+      position:relative;
+      z-index:2; /* por encima del canvas de fondo */
+    }
+
+    /* NAV */
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 18px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .logo {
+      width:44px;
+      height:44px;
+      border-radius:10px;
+      background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      font-size:14px;
+      color:var(--accent);
+      border:1px solid rgba(255,255,255,0.04);
+    }
+    .brand h1{font-size:16px; margin:0}
+    .nav-links{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .nav-links a{
+      padding:8px 12px;
+      border-radius:9px;
+      font-weight:600;
+      color:var(--muted);
+      transition:all .22s ease;
+    }
+    .nav-links a:hover{
+      transform:translateY(-3px);
+      color:#fff;
+      background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    .cta {
+      padding:8px 14px;
+      border-radius:10px;
+      background:linear-gradient(90deg, rgba(255,107,53,0.12), rgba(255,107,53,0.06));
+      color:var(--accent);
+      border:1px solid rgba(255,107,53,0.12);
+      font-weight:700;
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .cta:hover{ transform:translateY(-3px); box-shadow: 0 8px 30px rgba(255,107,53,0.08); }
+
+    /* HERO */
+    .hero{
+      display:flex;
+      gap:28px;
+      align-items:center;
+      justify-content:space-between;
+      margin-top:30px;
+      padding:28px;
+      border-radius:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.02);
+      box-shadow: 0 12px 50px rgba(0,0,0,0.55);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-left{
+      flex:1;
+      min-width:220px;
+    }
+    .hero h2{
+      margin:0;
+      font-size:34px;
+      letter-spacing:1px;
+      line-height:1.03;
+      text-shadow: 0 6px 30px rgba(0,0,0,0.6);
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .hero .subtitle{
+      font-size:18px;
+      margin-top:12px;
+      color:var(--muted);
+      font-weight:600;
+    }
+
+    /* Información de la comunidad (editable en HTML) */
+    .info{
+      margin-top:22px;
+      padding:16px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.008));
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.02);
+      color:var(--muted);
+    }
+
+    /* MEMBERSHIPS */
+    .memberships{
+      margin-top:28px;
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:16px;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.008));
+      border-radius:12px;
+      padding:18px;
+      border:1px solid rgba(255,255,255,0.02);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+    .card:hover{ transform:translateY(-8px) scale(1.02); box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+    .card h3{ margin:0 0 8px 0; font-size:18px; color:#fff }
+    .price{ font-weight:800; font-size:20px; color:var(--accent); margin-bottom:12px }
+    .buy-btn{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:10px;
+      background:linear-gradient(90deg, rgba(255,107,53,0.12), rgba(255,107,53,0.06));
+      border:1px solid rgba(255,107,53,0.12);
+      color:var(--accent);
+      font-weight:700;
+      cursor:pointer;
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .buy-btn:hover{ transform:translateY(-4px); box-shadow:0 10px 30px rgba(255,107,53,0.06); }
+
+    /* Footer */
+    footer{
+      margin-top:28px;
+      color:var(--muted);
+      font-size:13px;
+      text-align:center;
+      padding:18px;
+    }
+
+    /* Responsive */
+    @media (max-width:980px){
+      .memberships{ grid-template-columns: repeat(2, 1fr); }
+      .hero{ flex-direction:column; align-items:flex-start }
+      .nav-links{ display:none; }
+      .mobile-menu-btn{ display:inline-block; }
+    }
+    @media (max-width:560px){
+      .memberships{ grid-template-columns: 1fr; }
+      .hero h2{ font-size:26px }
+      .brand h1{ font-size:14px }
+    }
+
+    /* Mobile menu button */
+    .mobile-menu-btn{ display:none; background:transparent; border:0; color:var(--muted); font-weight:700; padding:8px 10px; border-radius:8px; }
+    .mobile-menu{ display:none; gap:10px; margin-top:12px; flex-direction:column; }
+    .mobile-menu a{ padding:8px 12px; border-radius:9px; background:var(--glass-2); color:var(--muted) }
+    .mobile-menu.show{ display:flex; }
+
+    /* small helper for subtle underline accent on links */
+    .underline-accent{ position:relative; }
+    .underline-accent::after{
+      content:"";
+      position:absolute;
+      left:0; right:0; bottom:-6px;
+      height:3px;
+      background:linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity:0;
+      transform:translateY(6px);
+      transition:all .28s ease;
+      border-radius:6px;
+    }
+    .underline-accent:hover::after{ opacity:1; transform:translateY(0); }
+  </style>
 </head>
-<body class="font-sans antialiased __variable_b75cb0 __variable_97f5e1">
-	<!--$-->
-	<div class="fixed inset-0 bg-black pointer-events-none transition-opacity duration-300 ease-in-out z-[100] opacity-0"></div>
-	<div class="transition-opacity duration-500 ease-in-out opacity-100">
-		<div class="min-h-screen bg-black overflow-hidden">
-			<main class="min-h-screen relative overflow-hidden">
-				<div class="fixed inset-0 w-full h-full">
-					<div class="aurora-container"></div>
-				</div>
-				<div class="relative z-10">
-					<nav class="fixed top-4 md:top-8 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 translate-y-0 opacity-100 opacity-0 translate-y-4" style="transition:opacity 0.8s ease-out, transform 0.8s ease-out">
-						<div class="w-[90vw] max-w-xs md:max-w-4xl mx-auto">
-							<div class="bg-white/10 border-white/20 backdrop-blur-md border rounded-full px-4 py-3 md:px-6 md:py-2 transition-colors duration-300">
-								<div class="flex items-center justify-between">
-									<button class="flex items-center hover:scale-105 transition-transform duration-200 cursor-pointer">
-									<div class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center"><img alt="Puro Chile RP" class="w-full h-full object-contain" data-nimg="1" height="40" src="/images/puro-chile-logo.png" style="color:transparent" width="40"></div></button>
-									<div class="hidden md:flex items-center space-x-8">
-										<button class="text-white/80 hover:text-white hover:scale-105 transition-all duration-200 font-medium cursor-pointer">Inicio</button><button class="text-white/80 hover:text-white hover:scale-105 transition-all duration-200 font-medium cursor-pointer">Beneficios VIP</button><button class="text-white/80 hover:text-white hover:scale-105 transition-all duration-200 font-medium cursor-pointer">Normativas</button><button class="text-white/80 hover:text-white hover:scale-105 transition-all duration-200 font-medium cursor-pointer">Facciones</button>
-									</div>
-									<div class="hidden md:block">
-										<button class="relative bg-white text-black hover:bg-gray-50 font-medium px-6 py-2 rounded-full flex items-center transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer group"><span class="mr-2">Únete Ahora</span><svg class="lucide lucide-arrow-right transition-transform duration-300 group-hover:translate-x-1" height="16" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
-										<path d="M5 12h14"></path>
-										<path d="m12 5 7 7-7 7"></path></svg></button>
-									</div><button class="md:hidden text-white hover:scale-110 transition-transform duration-200 cursor-pointer">
-									<div class="relative w-6 h-6">
-										<svg class="lucide lucide-menu absolute inset-0 transition-all duration-300 opacity-100 rotate-0 scale-100" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-										<line x1="4" x2="20" y1="12" y2="12"></line>
-										<line x1="4" x2="20" y1="6" y2="6"></line>
-										<line x1="4" x2="20" y1="18" y2="18"></line></svg><svg class="lucide lucide-x absolute inset-0 transition-all duration-300 opacity-0 -rotate-180 scale-75" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-										<path d="M18 6 6 18"></path>
-										<path d="m6 6 12 12"></path></svg>
-									</div></button>
-								</div>
-							</div>
-						</div>
-						<div class="md:hidden relative">
-							<div class="fixed inset-0 bg-black/20 backdrop-blur-sm transition-all duration-300 opacity-0 pointer-events-none" style="top:0;left:0;right:0;bottom:0;z-index:-1"></div>
-							<div class="mt-2 w-[90vw] max-w-xs mx-auto transition-all duration-500 ease-out transform-gpu opacity-0 -translate-y-8 scale-95 pointer-events-none">
-								<div class="bg-white/10 border-white/20 backdrop-blur-md border rounded-2xl p-4 shadow-2xl transition-colors duration-300">
-									<div class="flex flex-col space-y-1">
-										<button class="text-white/80 hover:text-white hover:bg-white/10 rounded-lg px-3 py-3 text-left transition-all duration-300 font-medium cursor-pointer transform hover:scale-[1.02] hover:translate-x-1" style="animation-delay:0ms">Inicio</button><button class="text-white/80 hover:text-white hover:bg-white/10 rounded-lg px-3 py-3 text-left transition-all duration-300 font-medium cursor-pointer transform hover:scale-[1.02] hover:translate-x-1" style="animation-delay:0ms">Beneficios VIP</button><button class="text-white/80 hover:text-white hover:bg-white/10 rounded-lg px-3 py-3 text-left transition-all duration-300 font-medium cursor-pointer transform hover:scale-[1.02] hover:translate-x-1" style="animation-delay:0ms">Normativas</button><button class="text-white/80 hover:text-white hover:bg-white/10 rounded-lg px-3 py-3 text-left transition-all duration-300 font-medium cursor-pointer transform hover:scale-[1.02] hover:translate-x-1" style="animation-delay:0ms">Facciones</button>
-										<div class="h-px bg-white/10 my-2"></div><button class="relative bg-white text-black hover:bg-gray-50 font-medium px-6 py-3 rounded-full flex items-center transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer group transform" style="animation-delay:0ms"><span class="mr-2">Únete Ahora</span><svg class="lucide lucide-arrow-right transition-transform duration-300 group-hover:translate-x-1" height="16" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
-										<path d="M5 12h14"></path>
-										<path d="m12 5 7 7-7 7"></path></svg></button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</nav>
-					<section class="min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden" id="inicio">
-						<div class="absolute inset-0 z-0" style="transform:scale(1.1)">
-							<div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 z-10"></div>
-						</div>
-						<div class="max-w-4xl mx-auto text-center relative z-10">
-							<div class="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium mb-8 mt-12" style="opacity:0;transform:translateY(20px)">
-								<span class="w-2 h-2 bg-white/60 rounded-full mr-2 animate-pulse"></span>Servidor de Roleplay Chileno en Roblox
-							</div>
-							<h1 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-balance mb-6" style="opacity:0;transform:translateY(30px)"><span class="text-foreground">Vive la mejor</span><br>
-							<span class="inline-flex items-center justify-center flex-wrap gap-2 mt-4 sm:mt-6 md:mt-8"><span class="text-foreground">Experiencia</span><span class="text-rotate px-2 sm:px-2 md:px-3 bg-white text-black overflow-hidden py-1 sm:py-1 md:py-2 justify-center rounded-lg shadow-lg"><span class="text-rotate-sr-only">Roleplay</span><span aria-hidden="true" class="text-rotate"><span class="text-rotate-word overflow-hidden pb-1 sm:pb-1 md:pb-1"><span class="text-rotate-element" style="transform:none">R</span><span class="text-rotate-element" style="transform:none">o</span><span class="text-rotate-element" style="transform:none">l</span><span class="text-rotate-element" style="transform:none">e</span><span class="text-rotate-element" style="transform:none">p</span><span class="text-rotate-element" style="transform:none">l</span><span class="text-rotate-element" style="transform:none">a</span><span class="text-rotate-element" style="transform:none">y</span></span></span></span></span></h1>
-							<p class="text-base sm:text-xl md:text-2xl text-white text-balance max-w-sm sm:max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed px-4 sm:px-0 font-light" style="opacity:0;transform:translateY(20px)">Únete a Puro Chile RP, el servidor de Roblox más auténtico de Chile. Vive historias únicas, crea tu personaje y forma parte de una comunidad apasionada por el roleplay de calidad.</p>
-							<div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 sm:mb-16" style="opacity:0;transform:translateY(20px)">
-								<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*=&#x27;size-&#x27;])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs h-10 has-[&gt;svg]:px-4 bg-white text-black rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 hover:bg-gray-50 hover:scale-105 hover:shadow-lg group cursor-pointer relative overflow-hidden" data-slot="button">Unirse al Servidor Principal<svg class="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" viewbox="0 0 24 24">
-								<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></button><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*=&#x27;size-&#x27;])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border shadow-xs hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-10 has-[&gt;svg]:px-4 rounded-full px-8 py-4 text-lg font-medium border-border hover:bg-accent transition-all duration-200 hover:scale-105 group bg-transparent cursor-pointer" data-slot="button"><svg class="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" viewbox="0 0 24 24">
-								<path d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h1m4 0h1m-6-8h8a2 2 0 012 2v8a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>Ver Normativas</button><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*=&#x27;size-&#x27;])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-10 has-[&gt;svg]:px-4 rounded-full px-8 py-4 text-lg font-medium border-purple-400 transition-all duration-200 group bg-transparent text-purple-300 opacity-50 cursor-not-allowed" data-slot="button" disabled><svg class="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" viewbox="0 0 24 24">
-								<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>Unirse a Marketing</button>
-							</div>
-							<div class="text-center px-4 hidden sm:block overflow-hidden" style="opacity:0">
-								<p class="text-sm text-white mb-6">Comunidad activa y en constante crecimiento</p>
-								<div class="relative overflow-hidden w-full max-w-4xl mx-auto">
-									<div class="flex items-center gap-8 opacity-60 hover:opacity-80 transition-all duration-500 animate-slide-left">
-										<div class="flex items-center gap-8 whitespace-nowrap">
-											<div class="text-base sm:text-lg font-semibold">
-												+300 Jugadores
-											</div>
-											<div class="text-base sm:text-lg font-semibold">
-												Staff Activo 24/7
-											</div>
-											<div class="text-base sm:text-lg font-semibold">
-												Eventos Semanales
-											</div>
-											<div class="text-base sm:text-lg font-semibold">
-												Economía Balanceada
-											</div>
-											<div class="text-base sm:text-lg font-semibold">
-												Whitelist Activa
-											</div>
-											<div class="text-base sm:text-lg font-semibold">
-												Comunidad Respetuosa
-											</div>
-										</div>
-										<div class="flex items-center gap-8 whitespace-nowrap">
-											<div class="text-base sm:text-lg font-semibold">
-												+300 Jugadores
-											</div>
-											<div class="text-base sm:text-lg font-semibold">
-												Staff Activo 24/7
-											</div>
-											<div class="text-base sm:text-lg font-semibold">
-												Eventos Semanales
-											</div>
-											<div class="text-base sm:text-lg font-semibold">
-												Economía Balanceada
-											</div>
-											<div class="text-base sm:text-lg font-semibold">
-												Whitelist Activa
-											</div>
-											<div class="text-base sm:text-lg font-semibold">
-												Comunidad Respetuosa
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="text-center px-4 mb-8 sm:hidden overflow-hidden" style="opacity:0">
-								<p class="text-sm text-white mb-6">Comunidad activa y en constante crecimiento</p>
-								<div class="relative overflow-hidden w-full max-w-sm mx-auto">
-									<div class="absolute left-0 top-0 w-8 h-full bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
-									<div class="absolute right-0 top-0 w-8 h-full bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
-									<div class="flex items-center gap-6 opacity-60 animate-slide-left-mobile">
-										<div class="flex items-center gap-6 whitespace-nowrap">
-											<div class="text-sm font-semibold">
-												+300 Jugadores
-											</div>
-											<div class="text-sm font-semibold">
-												Staff 24/7
-											</div>
-											<div class="text-sm font-semibold">
-												Eventos
-											</div>
-											<div class="text-sm font-semibold">
-												Economía
-											</div>
-											<div class="text-sm font-semibold">
-												Whitelist
-											</div>
-											<div class="text-sm font-semibold">
-												Comunidad
-											</div>
-										</div>
-										<div class="flex items-center gap-6 whitespace-nowrap">
-											<div class="text-sm font-semibold">
-												+300 Jugadores
-											</div>
-											<div class="text-sm font-semibold">
-												Staff 24/7
-											</div>
-											<div class="text-sm font-semibold">
-												Eventos
-											</div>
-											<div class="text-sm font-semibold">
-												Economía
-											</div>
-											<div class="text-sm font-semibold">
-												Whitelist
-											</div>
-											<div class="text-sm font-semibold">
-												Comunidad
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
-					<section class="relative z-10" id="beneficios">
-						<div class="bg-white rounded-t-[3rem] pt-16 sm:pt-24 pb-16 sm:pb-24 px-4 relative overflow-hidden">
-							<div class="absolute inset-0 opacity-[0.02]">
-								<div class="absolute inset-0" style="background-image:radial-gradient(circle at 1px 1px, rgb(0,0,0) 1px, transparent 0);background-size:24px 24px"></div>
-							</div>
-							<div class="max-w-7xl mx-auto w-full relative">
-								<div class="text-center mb-16" style="opacity:0;transform:translateY(30px)">
-									<div class="inline-flex items-center px-4 py-2 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-sm font-medium mb-6">
-										<svg class="lucide lucide-crown w-4 h-4 mr-2" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-										<path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"></path>
-										<path d="M5 21h14"></path></svg>Beneficios Exclusivos
-									</div>
-									<h2 class="text-4xl md:text-6xl font-bold text-slate-900 mb-6">Beneficios VIP y BOOSTER</h2>
-									<p class="text-xl text-slate-600 max-w-3xl mx-auto">Apoya al servidor y obtén beneficios exclusivos que mejorarán tu experiencia de roleplay</p>
-								</div>
-								<div class="mb-20">
-									<div class="text-center mb-12" style="opacity:0">
-										<h3 class="text-3xl font-bold text-slate-900 mb-3 flex items-center justify-center gap-3"><svg class="lucide lucide-crown w-8 h-8 text-yellow-600" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-										<path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"></path>
-										<path d="M5 21h14"></path></svg>Niveles VIP</h3>
-										<p class="text-slate-600">Elige el nivel que mejor se adapte a ti</p>
-									</div>
-									<div class="grid md:grid-cols-3 gap-8" style="opacity:0">
-										<div style="opacity:0;transform:translateY(30px)">
-											<div class="text-card-foreground gap-6 rounded-xl py-6 bg-white shadow-xl border-blue-200 border-2 hover:shadow-2xl transition-all duration-300 hover:scale-105 relative overflow-hidden h-full flex flex-col" data-slot="card">
-												<div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-blue-400 to-blue-600"></div>
-												<div class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6" data-slot="card-header">
-													<div class="p-3 rounded-full bg-blue-500/10 w-fit mb-3">
-														<svg class="lucide lucide-crown w-6 h-6 text-blue-600" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"></path>
-														<path d="M5 21h14"></path></svg>
-													</div>
-													<div class="font-semibold text-2xl text-slate-900" data-slot="card-title">
-														VIP PuroCL
-													</div>
-													<div class="text-3xl font-bold text-slate-900 mt-2" data-slot="card-description">
-														100 Robux
-													</div>
-												</div>
-												<div class="px-6 space-y-4 flex-grow flex flex-col" data-slot="card-content">
-													<div class="flex-grow space-y-4">
-														<div class="flex items-start gap-3">
-															<svg class="lucide lucide-check w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-															<path d="M20 6 9 17l-5-5"></path></svg>
-															<p class="text-slate-700">Rango Exclusivo @・VIP PuroCL</p>
-														</div>
-														<div class="flex items-start gap-3">
-															<svg class="lucide lucide-check w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-															<path d="M20 6 9 17l-5-5"></path></svg>
-															<p class="text-slate-700">15M IC + Bonos semanales</p>
-														</div>
-														<div class="flex items-start gap-3">
-															<svg class="lucide lucide-check w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-															<path d="M20 6 9 17l-5-5"></path></svg>
-															<p class="text-slate-700">Vehículo personalizado valorado en 20M</p>
-														</div>
-														<div class="flex items-start gap-3">
-															<svg class="lucide lucide-check w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-															<path d="M20 6 9 17l-5-5"></path></svg>
-															<p class="text-slate-700">2 trabajos completos y 3 parciales</p>
-														</div>
-														<div class="flex items-start gap-3">
-															<svg class="lucide lucide-check w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-															<path d="M20 6 9 17l-5-5"></path></svg>
-															<p class="text-slate-700">Color a elección</p>
-														</div>
-													</div><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*=&#x27;size-&#x27;])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary shadow-xs hover:bg-primary/90 h-9 px-4 py-2 has-[&gt;svg]:px-3 w-full mt-6 bg-gradient-to-r from-blue-400 to-blue-600 text-white hover:opacity-90 transition-all duration-300 group" data-slot="button">Comprar Ahora<svg class="lucide lucide-external-link w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="M15 3h6v6"></path>
-													<path d="M10 14 21 3"></path>
-													<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></button>
-												</div>
-											</div>
-										</div>
-										<div style="opacity:0;transform:translateY(30px)">
-											<div class="text-card-foreground gap-6 rounded-xl py-6 bg-white shadow-xl border-slate-200 border-2 hover:shadow-2xl transition-all duration-300 hover:scale-105 relative overflow-hidden h-full flex flex-col" data-slot="card">
-												<div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-slate-400 to-slate-600"></div>
-												<div class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6" data-slot="card-header">
-													<div class="p-3 rounded-full bg-slate-500/10 w-fit mb-3">
-														<svg class="lucide lucide-crown w-6 h-6 text-slate-600" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"></path>
-														<path d="M5 21h14"></path></svg>
-													</div>
-													<div class="font-semibold text-2xl text-slate-900" data-slot="card-title">
-														VIP Platinum
-													</div>
-													<div class="text-3xl font-bold text-slate-900 mt-2" data-slot="card-description">
-														200 Robux
-													</div>
-												</div>
-												<div class="px-6 space-y-4 flex-grow flex flex-col" data-slot="card-content">
-													<div class="flex-grow space-y-4">
-														<div class="flex items-start gap-3">
-															<svg class="lucide lucide-check w-5 h-5 text-slate-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-															<path d="M20 6 9 17l-5-5"></path></svg>
-															<p class="text-slate-700">Rango Exclusivo @・VIP Platinum</p>
-														</div>
-														<div class="flex items-start gap-3">
-															<svg class="lucide lucide-check w-5 h-5 text-slate-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-															<path d="M20 6 9 17l-5-5"></path></svg>
-															<p class="text-slate-700">Vehículo premium valorado en 35M</p>
-														</div>
-														<div class="flex items-start gap-3">
-															<svg class="lucide lucide-check w-5 h-5 text-slate-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-															<path d="M20 6 9 17l-5-5"></path></svg>
-															<p class="text-slate-700">30M IC + Bonificaciones semanales</p>
-														</div>
-														<div class="flex items-start gap-3">
-															<svg class="lucide lucide-check w-5 h-5 text-slate-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-															<path d="M20 6 9 17l-5-5"></path></svg>
-															<p class="text-slate-700">4 trabajos completos y 4 parciales</p>
-														</div>
-														<div class="flex items-start gap-3">
-															<svg class="lucide lucide-check w-5 h-5 text-slate-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-															<path d="M20 6 9 17l-5-5"></path></svg>
-															<p class="text-slate-700">Color a elección</p>
-														</div>
-													</div><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*=&#x27;size-&#x27;])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary shadow-xs hover:bg-primary/90 h-9 px-4 py-2 has-[&gt;svg]:px-3 w-full mt-6 bg-gradient-to-r from-slate-400 to-slate-600 text-white hover:opacity-90 transition-all duration-300 group" data-slot="button">Comprar Ahora<svg class="lucide lucide-external-link w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="M15 3h6v6"></path>
-													<path d="M10 14 21 3"></path>
-													<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></button>
-												</div>
-											</div>
-										</div>
-										<div style="opacity:0;transform:translateY(30px)">
-											<div class="text-card-foreground gap-6 rounded-xl py-6 bg-white shadow-xl border-amber-200 border-2 hover:shadow-2xl transition-all duration-300 hover:scale-105 relative overflow-hidden h-full flex flex-col" data-slot="card">
-												<div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-amber-400 to-amber-600"></div>
-												<div class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6" data-slot="card-header">
-													<div class="p-3 rounded-full bg-amber-500/10 w-fit mb-3">
-														<svg class="lucide lucide-crown w-6 h-6 text-amber-600" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"></path>
-														<path d="M5 21h14"></path></svg>
-													</div>
-													<div class="font-semibold text-2xl text-slate-900" data-slot="card-title">
-														VIP Luxury
-													</div>
-													<div class="text-3xl font-bold text-slate-900 mt-2" data-slot="card-description">
-														625 Robux
-													</div>
-												</div>
-												<div class="px-6 space-y-4 flex-grow flex flex-col" data-slot="card-content">
-													<div class="flex-grow space-y-4">
-														<div class="flex items-start gap-3">
-															<svg class="lucide lucide-check w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-															<path d="M20 6 9 17l-5-5"></path></svg>
-															<p class="text-slate-700">Arma a elección (Legal o ilegal)</p>
-														</div>
-														<div class="flex items-start gap-3">
-															<svg class="lucide lucide-check w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-															<path d="M20 6 9 17l-5-5"></path></svg>
-															<p class="text-slate-700">Vehículo de lujo exclusivo valorado en 50M</p>
-														</div>
-														<div class="flex items-start gap-3">
-															<svg class="lucide lucide-check w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-															<path d="M20 6 9 17l-5-5"></path></svg>
-															<p class="text-slate-700">50M IC + Sueldo Donador</p>
-														</div>
-														<div class="flex items-start gap-3">
-															<svg class="lucide lucide-check w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-															<path d="M20 6 9 17l-5-5"></path></svg>
-															<p class="text-slate-700">6 trabajos completos y 6 parciales</p>
-														</div>
-														<div class="flex items-start gap-3">
-															<svg class="lucide lucide-check w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-															<path d="M20 6 9 17l-5-5"></path></svg>
-															<p class="text-slate-700">Rango Exclusivo @VIP Luxury</p>
-														</div>
-														<div class="flex items-start gap-3">
-															<svg class="lucide lucide-check w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-															<path d="M20 6 9 17l-5-5"></path></svg>
-															<p class="text-slate-700">Color a elección</p>
-														</div>
-													</div><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*=&#x27;size-&#x27;])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary shadow-xs hover:bg-primary/90 h-9 px-4 py-2 has-[&gt;svg]:px-3 w-full mt-6 bg-gradient-to-r from-amber-400 to-amber-600 text-white hover:opacity-90 transition-all duration-300 group" data-slot="button">Comprar Ahora<svg class="lucide lucide-external-link w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="M15 3h6v6"></path>
-													<path d="M10 14 21 3"></path>
-													<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div>
-									<div class="text-center mb-12" style="opacity:0">
-										<h3 class="text-3xl font-bold text-slate-900 mb-3 flex items-center justify-center gap-3"><svg class="lucide lucide-zap w-8 h-8 text-purple-600" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-										<path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>Niveles BOOSTER</h3>
-										<p class="text-slate-600">Impulsa nuestro Discord y recibe recompensas según tu nivel</p>
-									</div>
-									<div class="grid md:grid-cols-3 gap-8" style="opacity:0">
-										<div style="opacity:0;transform:translateY(30px)">
-											<div class="text-card-foreground flex flex-col gap-6 rounded-xl py-6 bg-white shadow-xl border-pink-200 border-2 hover:shadow-2xl transition-all duration-300 hover:scale-105 relative overflow-hidden h-full" data-slot="card">
-												<div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-pink-400 to-pink-600"></div>
-												<div class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6" data-slot="card-header">
-													<div class="p-3 rounded-full bg-pink-500/10 w-fit mb-3">
-														<svg class="lucide lucide-zap w-6 h-6 text-pink-600" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
-													</div>
-													<div class="font-semibold text-2xl text-slate-900" data-slot="card-title">
-														Booster Nivel 1
-													</div>
-													<div class="text-sm text-slate-600" data-slot="card-description">
-														Impulsa el servidor
-													</div>
-												</div>
-												<div class="px-6 space-y-4" data-slot="card-content">
-													<div class="flex items-start gap-3">
-														<svg class="lucide lucide-check w-5 h-5 text-pink-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M20 6 9 17l-5-5"></path></svg>
-														<p class="text-slate-700">9.000.000 IC</p>
-													</div>
-													<div class="flex items-start gap-3">
-														<svg class="lucide lucide-check w-5 h-5 text-pink-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M20 6 9 17l-5-5"></path></svg>
-														<p class="text-slate-700">Auto gratis de 17M</p>
-													</div>
-													<div class="flex items-start gap-3">
-														<svg class="lucide lucide-check w-5 h-5 text-pink-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M20 6 9 17l-5-5"></path></svg>
-														<p class="text-slate-700">Sueldo Booster (RANGO + SUELDO)</p>
-													</div>
-													<div class="flex items-start gap-3">
-														<svg class="lucide lucide-check w-5 h-5 text-pink-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M20 6 9 17l-5-5"></path></svg>
-														<p class="text-slate-700">Color y nombre personalizado</p>
-													</div>
-													<div class="flex items-start gap-3">
-														<svg class="lucide lucide-check w-5 h-5 text-pink-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M20 6 9 17l-5-5"></path></svg>
-														<p class="text-slate-700">2 trabajos parciales y 2 completos</p>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div style="opacity:0;transform:translateY(30px)">
-											<div class="text-card-foreground flex flex-col gap-6 rounded-xl py-6 bg-white shadow-xl border-purple-200 border-2 hover:shadow-2xl transition-all duration-300 hover:scale-105 relative overflow-hidden h-full" data-slot="card">
-												<div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-purple-400 to-purple-600"></div>
-												<div class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6" data-slot="card-header">
-													<div class="p-3 rounded-full bg-purple-500/10 w-fit mb-3">
-														<svg class="lucide lucide-zap w-6 h-6 text-purple-600" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
-													</div>
-													<div class="font-semibold text-2xl text-slate-900" data-slot="card-title">
-														Booster Nivel 2
-													</div>
-													<div class="text-sm text-slate-600" data-slot="card-description">
-														Mayor impulso
-													</div>
-												</div>
-												<div class="px-6 space-y-4" data-slot="card-content">
-													<div class="flex items-start gap-3">
-														<svg class="lucide lucide-check w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M20 6 9 17l-5-5"></path></svg>
-														<p class="text-slate-700">Chat donador</p>
-													</div>
-													<div class="flex items-start gap-3">
-														<svg class="lucide lucide-check w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M20 6 9 17l-5-5"></path></svg>
-														<p class="text-slate-700">Color y nombre personalizado</p>
-													</div>
-													<div class="flex items-start gap-3">
-														<svg class="lucide lucide-check w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M20 6 9 17l-5-5"></path></svg>
-														<p class="text-slate-700">4 trabajos parciales y 2 completos</p>
-													</div>
-													<div class="flex items-start gap-3">
-														<svg class="lucide lucide-check w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M20 6 9 17l-5-5"></path></svg>
-														<p class="text-slate-700">10M IC</p>
-													</div>
-													<div class="flex items-start gap-3">
-														<svg class="lucide lucide-check w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M20 6 9 17l-5-5"></path></svg>
-														<p class="text-slate-700">Auto gratis de menos de 28M</p>
-													</div>
-													<div class="flex items-start gap-3">
-														<svg class="lucide lucide-check w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M20 6 9 17l-5-5"></path></svg>
-														<p class="text-slate-700">Rango Exclusivo: ・Booster Puro Chile</p>
-													</div>
-													<div class="flex items-start gap-3">
-														<svg class="lucide lucide-check w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M20 6 9 17l-5-5"></path></svg>
-														<p class="text-slate-700">Sueldo Booster (RANGO + SUELDO)</p>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div style="opacity:0;transform:translateY(30px)">
-											<div class="text-card-foreground flex flex-col gap-6 rounded-xl py-6 bg-white shadow-xl border-fuchsia-200 border-2 hover:shadow-2xl transition-all duration-300 hover:scale-105 relative overflow-hidden h-full" data-slot="card">
-												<div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-fuchsia-400 to-fuchsia-600"></div>
-												<div class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6" data-slot="card-header">
-													<div class="p-3 rounded-full bg-fuchsia-500/10 w-fit mb-3">
-														<svg class="lucide lucide-zap w-6 h-6 text-fuchsia-600" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
-													</div>
-													<div class="font-semibold text-2xl text-slate-900" data-slot="card-title">
-														Booster Nivel 3
-													</div>
-													<div class="text-sm text-slate-600" data-slot="card-description">
-														Máximo impulso
-													</div>
-												</div>
-												<div class="px-6 space-y-4" data-slot="card-content">
-													<div class="flex items-start gap-3">
-														<svg class="lucide lucide-check w-5 h-5 text-fuchsia-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M20 6 9 17l-5-5"></path></svg>
-														<p class="text-slate-700">Chat donador</p>
-													</div>
-													<div class="flex items-start gap-3">
-														<svg class="lucide lucide-check w-5 h-5 text-fuchsia-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M20 6 9 17l-5-5"></path></svg>
-														<p class="text-slate-700">Color y nombre personalizado</p>
-													</div>
-													<div class="flex items-start gap-3">
-														<svg class="lucide lucide-check w-5 h-5 text-fuchsia-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M20 6 9 17l-5-5"></path></svg>
-														<p class="text-slate-700">8 trabajos parciales y 3 completos</p>
-													</div>
-													<div class="flex items-start gap-3">
-														<svg class="lucide lucide-check w-5 h-5 text-fuchsia-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M20 6 9 17l-5-5"></path></svg>
-														<p class="text-slate-700">20M IC</p>
-													</div>
-													<div class="flex items-start gap-3">
-														<svg class="lucide lucide-check w-5 h-5 text-fuchsia-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M20 6 9 17l-5-5"></path></svg>
-														<p class="text-slate-700">Auto gratis de menos de 40M</p>
-													</div>
-													<div class="flex items-start gap-3">
-														<svg class="lucide lucide-check w-5 h-5 text-fuchsia-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M20 6 9 17l-5-5"></path></svg>
-														<p class="text-slate-700">Rango Exclusivo: ・Booster Puro Chile</p>
-													</div>
-													<div class="flex items-start gap-3">
-														<svg class="lucide lucide-check w-5 h-5 text-fuchsia-600 mt-0.5 flex-shrink-0" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M20 6 9 17l-5-5"></path></svg>
-														<p class="text-slate-700">Sueldo Booster (RANGO + SUELDO)</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="mt-16 text-center" style="opacity:0;transform:translateY(20px)">
-									<div class="bg-card text-card-foreground flex-col gap-6 rounded-xl border py-6 bg-gradient-to-br from-slate-50 to-slate-100 border-slate-200 shadow-lg inline-block" data-slot="card">
-										<div class="px-6 pt-6" data-slot="card-content">
-											<div class="flex items-center gap-3 text-slate-700">
-												<svg class="lucide lucide-star w-5 h-5 text-yellow-600" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-												<path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
-												<p class="text-sm">Para obtener VIP, visita nuestra tienda. Para ser BOOSTER, impulsa nuestro servidor de Discord</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
-					<section class="relative z-10" id="normativas">
-						<div class="bg-white rounded-b-[3rem] pt-16 sm:pt-24 pb-16 sm:pb-24 px-4 relative overflow-hidden">
-							<div class="absolute inset-0 opacity-[0.02]">
-								<div class="absolute inset-0" style="background-image:radial-gradient(circle at 1px 1px, rgb(0,0,0) 1px, transparent 0);background-size:24px 24px"></div>
-							</div>
-							<div class="max-w-7xl mx-auto w-full relative">
-								<div class="text-center mb-16" style="opacity:0;transform:translateY(30px)">
-									<div class="inline-flex items-center px-4 py-2 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-sm font-medium mb-6">
-										<svg class="lucide lucide-book-open w-4 h-4 mr-2" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-										<path d="M12 7v14"></path>
-										<path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg>Reglas del Servidor
-									</div>
-									<h2 class="text-4xl md:text-6xl font-bold text-slate-900 mb-6">Normativas</h2>
-									<p class="text-xl text-slate-600 max-w-3xl mx-auto">Conoce las reglas fundamentales para mantener un roleplay de calidad en Puro Chile RP</p>
-								</div>
-								<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12" style="opacity:0">
-									<div style="opacity:0;transform:translateY(30px)">
-										<a href="/normativas/roleplay">
-										<div class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group cursor-pointer transition-all duration-500 bg-white/80 backdrop-blur-sm border-slate-200 hover:shadow-2xl hover:scale-105 h-full hover:bg-blue-500/10 hover:border-blue-500/50" data-slot="card">
-											<div class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6" data-slot="card-header">
-												<div class="p-4 rounded-2xl bg-blue-500/10 w-fit mb-4 group-hover:scale-110 transition-transform duration-500">
-													<svg class="lucide lucide-book-open w-8 h-8 text-blue-600" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="M12 7v14"></path>
-													<path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg>
-												</div>
-												<div class="font-semibold text-2xl text-slate-900 mb-2" data-slot="card-title">
-													Roleplay
-												</div>
-												<div class="text-sm text-slate-600" data-slot="card-description">
-													Reglas fundamentales para un roleplay de calidad en Puro Chile RP
-												</div>
-											</div>
-											<div class="px-6" data-slot="card-content">
-												<div class="flex items-center gap-2 text-sm font-medium text-slate-700 group-hover:gap-3 transition-all duration-300">
-													<span>Ver normativa completa</span><svg class="lucide lucide-book-open w-4 h-4" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="M12 7v14"></path>
-													<path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg>
-												</div>
-											</div>
-										</div></a>
-									</div>
-									<div style="opacity:0;transform:translateY(30px)">
-										<a href="/normativas/discord">
-										<div class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group cursor-pointer transition-all duration-500 bg-white/80 backdrop-blur-sm border-slate-200 hover:shadow-2xl hover:scale-105 h-full hover:bg-indigo-500/10 hover:border-indigo-500/50" data-slot="card">
-											<div class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6" data-slot="card-header">
-												<div class="p-4 rounded-2xl bg-indigo-500/10 w-fit mb-4 group-hover:scale-110 transition-transform duration-500">
-													<svg class="lucide lucide-message-square w-8 h-8 text-indigo-600" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-												</div>
-												<div class="font-semibold text-2xl text-slate-900 mb-2" data-slot="card-title">
-													Discord
-												</div>
-												<div class="text-sm text-slate-600" data-slot="card-description">
-													Normas de comportamiento en nuestro servidor de Discord
-												</div>
-											</div>
-											<div class="px-6" data-slot="card-content">
-												<div class="flex items-center gap-2 text-sm font-medium text-slate-700 group-hover:gap-3 transition-all duration-300">
-													<span>Ver normativa completa</span><svg class="lucide lucide-message-square w-4 h-4" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-												</div>
-											</div>
-										</div></a>
-									</div>
-									<div style="opacity:0;transform:translateY(30px)">
-										<a href="/normativas/curaciones">
-										<div class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group cursor-pointer transition-all duration-500 bg-white/80 backdrop-blur-sm border-slate-200 hover:shadow-2xl hover:scale-105 h-full hover:bg-red-500/10 hover:border-red-500/50" data-slot="card">
-											<div class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6" data-slot="card-header">
-												<div class="p-4 rounded-2xl bg-red-500/10 w-fit mb-4 group-hover:scale-110 transition-transform duration-500">
-													<svg class="lucide lucide-heart w-8 h-8 text-red-600" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
-												</div>
-												<div class="font-semibold text-2xl text-slate-900 mb-2" data-slot="card-title">
-													Curaciones
-												</div>
-												<div class="text-sm text-slate-600" data-slot="card-description">
-													Normativas sobre servicios médicos y roleplay de heridas
-												</div>
-											</div>
-											<div class="px-6" data-slot="card-content">
-												<div class="flex items-center gap-2 text-sm font-medium text-slate-700 group-hover:gap-3 transition-all duration-300">
-													<span>Ver normativa completa</span><svg class="lucide lucide-heart w-4 h-4" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
-												</div>
-											</div>
-										</div></a>
-									</div>
-									<div style="opacity:0;transform:translateY(30px)">
-										<a href="/normativas/bandas">
-										<div class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group cursor-pointer transition-all duration-500 bg-white/80 backdrop-blur-sm border-slate-200 hover:shadow-2xl hover:scale-105 h-full hover:bg-purple-500/10 hover:border-purple-500/50" data-slot="card">
-											<div class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6" data-slot="card-header">
-												<div class="p-4 rounded-2xl bg-purple-500/10 w-fit mb-4 group-hover:scale-110 transition-transform duration-500">
-													<svg class="lucide lucide-users w-8 h-8 text-purple-600" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-													<circle cx="9" cy="7" r="4"></circle>
-													<path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-													<path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-												</div>
-												<div class="font-semibold text-2xl text-slate-900 mb-2" data-slot="card-title">
-													Bandas
-												</div>
-												<div class="text-sm text-slate-600" data-slot="card-description">
-													Reglas para organizaciones criminales y actividades ilegales
-												</div>
-											</div>
-											<div class="px-6" data-slot="card-content">
-												<div class="flex items-center gap-2 text-sm font-medium text-slate-700 group-hover:gap-3 transition-all duration-300">
-													<span>Ver normativa completa</span><svg class="lucide lucide-users w-4 h-4" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-													<circle cx="9" cy="7" r="4"></circle>
-													<path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-													<path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-												</div>
-											</div>
-										</div></a>
-									</div>
-									<div style="opacity:0;transform:translateY(30px)">
-										<a href="/normativas/ck">
-										<div class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group cursor-pointer transition-all duration-500 bg-white/80 backdrop-blur-sm border-slate-200 hover:shadow-2xl hover:scale-105 h-full hover:bg-gray-500/10 hover:border-gray-500/50" data-slot="card">
-											<div class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6" data-slot="card-header">
-												<div class="p-4 rounded-2xl bg-gray-500/10 w-fit mb-4 group-hover:scale-110 transition-transform duration-500">
-													<svg class="lucide lucide-skull w-8 h-8 text-gray-600" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="m12.5 17-.5-1-.5 1h1z"></path>
-													<path d="M15 22a1 1 0 0 0 1-1v-1a2 2 0 0 0 1.56-3.25 8 8 0 1 0-11.12 0A2 2 0 0 0 8 20v1a1 1 0 0 0 1 1z"></path>
-													<circle cx="15" cy="12" r="1"></circle>
-													<circle cx="9" cy="12" r="1"></circle></svg>
-												</div>
-												<div class="font-semibold text-2xl text-slate-900 mb-2" data-slot="card-title">
-													CK (Character Kill)
-												</div>
-												<div class="text-sm text-slate-600" data-slot="card-description">
-													Normativa sobre muerte permanente de personajes
-												</div>
-											</div>
-											<div class="px-6" data-slot="card-content">
-												<div class="flex items-center gap-2 text-sm font-medium text-slate-700 group-hover:gap-3 transition-all duration-300">
-													<span>Ver normativa completa</span><svg class="lucide lucide-skull w-4 h-4" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="m12.5 17-.5-1-.5 1h1z"></path>
-													<path d="M15 22a1 1 0 0 0 1-1v-1a2 2 0 0 0 1.56-3.25 8 8 0 1 0-11.12 0A2 2 0 0 0 8 20v1a1 1 0 0 0 1 1z"></path>
-													<circle cx="15" cy="12" r="1"></circle>
-													<circle cx="9" cy="12" r="1"></circle></svg>
-												</div>
-											</div>
-										</div></a>
-									</div>
-									<div style="opacity:0;transform:translateY(30px)">
-										<a href="/normativas/secuestro-mascaras">
-										<div class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group cursor-pointer transition-all duration-500 bg-white/80 backdrop-blur-sm border-slate-200 hover:shadow-2xl hover:scale-105 h-full hover:bg-blue-500/10 hover:border-blue-500/50" data-slot="card">
-											<div class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6" data-slot="card-header">
-												<div class="p-4 rounded-2xl bg-blue-500/10 w-fit mb-4 group-hover:scale-110 transition-transform duration-500">
-													<svg class="lucide lucide-user-x w-8 h-8 text-blue-600" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-													<circle cx="9" cy="7" r="4"></circle>
-													<line x1="17" x2="22" y1="8" y2="13"></line>
-													<line x1="22" x2="17" y1="8" y2="13"></line></svg>
-												</div>
-												<div class="font-semibold text-2xl text-slate-900 mb-2" data-slot="card-title">
-													Secuestro y Máscaras
-												</div>
-												<div class="text-sm text-slate-600" data-slot="card-description">
-													Sistema de secuestro y normativas de uso de máscaras
-												</div>
-											</div>
-											<div class="px-6" data-slot="card-content">
-												<div class="flex items-center gap-2 text-sm font-medium text-slate-700 group-hover:gap-3 transition-all duration-300">
-													<span>Ver normativa completa</span><svg class="lucide lucide-user-x w-4 h-4" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-													<circle cx="9" cy="7" r="4"></circle>
-													<line x1="17" x2="22" y1="8" y2="13"></line>
-													<line x1="22" x2="17" y1="8" y2="13"></line></svg>
-												</div>
-											</div>
-										</div></a>
-									</div>
-									<div style="opacity:0;transform:translateY(30px)">
-										<a href="/normativas/alertas">
-										<div class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group cursor-pointer transition-all duration-500 bg-white/80 backdrop-blur-sm border-slate-200 hover:shadow-2xl hover:scale-105 h-full hover:bg-yellow-500/10 hover:border-yellow-500/50" data-slot="card">
-											<div class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6" data-slot="card-header">
-												<div class="p-4 rounded-2xl bg-yellow-500/10 w-fit mb-4 group-hover:scale-110 transition-transform duration-500">
-													<svg class="lucide lucide-triangle-alert w-8 h-8 text-yellow-600" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path>
-													<path d="M12 9v4"></path>
-													<path d="M12 17h.01"></path></svg>
-												</div>
-												<div class="font-semibold text-2xl text-slate-900 mb-2" data-slot="card-title">
-													Alertas y Sanciones
-												</div>
-												<div class="text-sm text-slate-600" data-slot="card-description">
-													Sistema de advertencias y sanciones del servidor
-												</div>
-											</div>
-											<div class="px-6" data-slot="card-content">
-												<div class="flex items-center gap-2 text-sm font-medium text-slate-700 group-hover:gap-3 transition-all duration-300">
-													<span>Ver normativa completa</span><svg class="lucide lucide-triangle-alert w-4 h-4" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path>
-													<path d="M12 9v4"></path>
-													<path d="M12 17h.01"></path></svg>
-												</div>
-											</div>
-										</div></a>
-									</div>
-									<div style="opacity:0;transform:translateY(30px)">
-										<a href="/normativas/streamers">
-										<div class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group cursor-pointer transition-all duration-500 bg-white/80 backdrop-blur-sm border-slate-200 hover:shadow-2xl hover:scale-105 h-full hover:bg-pink-500/10 hover:border-pink-500/50" data-slot="card">
-											<div class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6" data-slot="card-header">
-												<div class="p-4 rounded-2xl bg-pink-500/10 w-fit mb-4 group-hover:scale-110 transition-transform duration-500">
-													<svg class="lucide lucide-video w-8 h-8 text-pink-600" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"></path>
-													<rect height="12" rx="2" width="14" x="2" y="6"></rect></svg>
-												</div>
-												<div class="font-semibold text-2xl text-slate-900 mb-2" data-slot="card-title">
-													Streamers
-												</div>
-												<div class="text-sm text-slate-600" data-slot="card-description">
-													Normativas y beneficios para creadores de contenido
-												</div>
-											</div>
-											<div class="px-6" data-slot="card-content">
-												<div class="flex items-center gap-2 text-sm font-medium text-slate-700 group-hover:gap-3 transition-all duration-300">
-													<span>Ver normativa completa</span><svg class="lucide lucide-video w-4 h-4" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"></path>
-													<rect height="12" rx="2" width="14" x="2" y="6"></rect></svg>
-												</div>
-											</div>
-										</div></a>
-									</div>
-									<div style="opacity:0;transform:translateY(30px)">
-										<a href="/normativas/vehiculos-vip">
-										<div class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group cursor-pointer transition-all duration-500 bg-white/80 backdrop-blur-sm border-slate-200 hover:shadow-2xl hover:scale-105 h-full hover:bg-amber-500/10 hover:border-amber-500/50" data-slot="card">
-											<div class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6" data-slot="card-header">
-												<div class="p-4 rounded-2xl bg-amber-500/10 w-fit mb-4 group-hover:scale-110 transition-transform duration-500">
-													<svg class="lucide lucide-car w-8 h-8 text-amber-600" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path>
-													<circle cx="7" cy="17" r="2"></circle>
-													<path d="M9 17h6"></path>
-													<circle cx="17" cy="17" r="2"></circle></svg>
-												</div>
-												<div class="font-semibold text-2xl text-slate-900 mb-2" data-slot="card-title">
-													Vehículos VIP
-												</div>
-												<div class="text-sm text-slate-600" data-slot="card-description">
-													Normativas exclusivas para vehículos premium y de donadores
-												</div>
-											</div>
-											<div class="px-6" data-slot="card-content">
-												<div class="flex items-center gap-2 text-sm font-medium text-slate-700 group-hover:gap-3 transition-all duration-300">
-													<span>Ver normativa completa</span><svg class="lucide lucide-car w-4 h-4" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path>
-													<circle cx="7" cy="17" r="2"></circle>
-													<path d="M9 17h6"></path>
-													<circle cx="17" cy="17" r="2"></circle></svg>
-												</div>
-											</div>
-										</div></a>
-									</div>
-								</div>
-								<div class="p-8 rounded-2xl bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200 shadow-lg" style="opacity:0;transform:scale(0.95)">
-									<div class="flex items-start gap-4">
-										<div class="p-3 rounded-full bg-red-500/20 flex-shrink-0">
-											<svg class="lucide lucide-triangle-alert w-6 h-6 text-red-600" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-											<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path>
-											<path d="M12 9v4"></path>
-											<path d="M12 17h.01"></path></svg>
-										</div>
-										<div>
-											<h3 class="text-xl font-bold text-red-600 mb-3">⚠️ Importante</h3>
-											<p class="text-slate-700 leading-relaxed">El incumplimiento de estas normativas puede resultar en advertencias, kicks, bans temporales o permanentes, dependiendo de la gravedad de la falta. El staff tiene la última palabra en todas las decisiones. Si tienes dudas sobre alguna normativa, no dudes en consultar con el equipo de administración.</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
-					<section class="relative z-10 bg-black" id="facciones">
-						<div class="pt-16 sm:pt-24 pb-16 sm:pb-24 px-4 relative overflow-hidden">
-							<div class="absolute inset-0 opacity-5">
-								<div class="absolute inset-0" style="background-image:radial-gradient(circle at 1px 1px, rgb(255,255,255) 1px, transparent 0);background-size:24px 24px"></div>
-							</div>
-							<div class="max-w-7xl mx-auto w-full relative">
-								<div class="text-center mb-16" style="opacity:0;transform:translateY(30px)">
-									<div class="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium mb-6">
-										<svg class="lucide lucide-shield w-4 h-4 mr-2" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-										<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg>Únete a una Facción
-									</div>
-									<h2 class="text-4xl md:text-6xl font-bold text-white mb-6">Facciones Legales</h2>
-									<p class="text-xl text-slate-300 max-w-3xl mx-auto">Forma parte de las organizaciones oficiales y contribuye al desarrollo de la ciudad</p>
-								</div>
-								<div class="grid md:grid-cols-2 gap-8" style="opacity:0">
-									<div style="opacity:0;transform:translateY(30px)">
-										<div class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group bg-white/5 backdrop-blur-md border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-500 hover:shadow-2xl hover:scale-105 shadow-green-500/20 h-full" data-slot="card">
-											<div class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6" data-slot="card-header">
-												<div class="flex items-start justify-between mb-4">
-													<div class="p-4 rounded-2xl bg-green-500/10 border border-green-500/30 group-hover:scale-110 transition-transform">
-														<svg class="lucide lucide-shield w-8 h-8 text-green-400" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg>
-													</div><a class="flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 text-sm font-medium hover:scale-105 transition-transform" href="https://discord.gg/Hs8e5zBY6U" rel="noopener noreferrer" target="_blank"><span>Discord</span><svg class="lucide lucide-external-link w-4 h-4" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="M15 3h6v6"></path>
-													<path d="M10 14 21 3"></path>
-													<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
-												</div>
-												<div class="font-semibold text-2xl text-white mb-2" data-slot="card-title">
-													Carabineros de Chile
-												</div>
-												<div class="text-slate-300 text-base" data-slot="card-description">
-													Mantén el orden y la seguridad en las calles de Chile
-												</div>
-											</div>
-											<div class="px-6" data-slot="card-content">
-												<div class="space-y-3">
-													<h4 class="text-sm font-semibold text-white/80 uppercase tracking-wider mb-3">Características</h4>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-green-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Patrullaje y vigilancia ciudadana</p>
-													</div>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-green-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Investigación de crímenes</p>
-													</div>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-green-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Operativos especiales</p>
-													</div>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-green-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Entrenamiento policial avanzado</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div style="opacity:0;transform:translateY(30px)">
-										<div class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group bg-white/5 backdrop-blur-md border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-500 hover:shadow-2xl hover:scale-105 shadow-blue-500/20 h-full" data-slot="card">
-											<div class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6" data-slot="card-header">
-												<div class="flex items-start justify-between mb-4">
-													<div class="p-4 rounded-2xl bg-blue-500/10 border border-blue-500/30 group-hover:scale-110 transition-transform">
-														<svg class="lucide lucide-search w-8 h-8 text-blue-400" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<circle cx="11" cy="11" r="8"></circle>
-														<path d="m21 21-4.3-4.3"></path></svg>
-													</div><a class="flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-sm font-medium hover:scale-105 transition-transform" href="https://discord.com/invite/TvuHHNvtNu" rel="noopener noreferrer" target="_blank"><span>Discord</span><svg class="lucide lucide-external-link w-4 h-4" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="M15 3h6v6"></path>
-													<path d="M10 14 21 3"></path>
-													<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
-												</div>
-												<div class="font-semibold text-2xl text-white mb-2" data-slot="card-title">
-													Policía de Investigaciones
-												</div>
-												<div class="text-slate-300 text-base" data-slot="card-description">
-													Investiga delitos complejos y mantén la seguridad nacional
-												</div>
-											</div>
-											<div class="px-6" data-slot="card-content">
-												<div class="space-y-3">
-													<h4 class="text-sm font-semibold text-white/80 uppercase tracking-wider mb-3">Características</h4>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Investigación criminalística</p>
-													</div>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Operaciones de inteligencia</p>
-													</div>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Control migratorio</p>
-													</div>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Lucha contra el crimen organizado</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div style="opacity:0;transform:translateY(30px)">
-										<div class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group bg-white/5 backdrop-blur-md border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-500 hover:shadow-2xl hover:scale-105 shadow-red-500/20 h-full" data-slot="card">
-											<div class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6" data-slot="card-header">
-												<div class="flex items-start justify-between mb-4">
-													<div class="p-4 rounded-2xl bg-red-500/10 border border-red-500/30 group-hover:scale-110 transition-transform">
-														<svg class="lucide lucide-heart w-8 h-8 text-red-400" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
-													</div><a class="flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-sm font-medium hover:scale-105 transition-transform" href="https://discord.gg/JMEGCuV423" rel="noopener noreferrer" target="_blank"><span>Discord</span><svg class="lucide lucide-external-link w-4 h-4" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="M15 3h6v6"></path>
-													<path d="M10 14 21 3"></path>
-													<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
-												</div>
-												<div class="font-semibold text-2xl text-white mb-2" data-slot="card-title">
-													Hospital Metropolitano
-												</div>
-												<div class="text-slate-300 text-base" data-slot="card-description">
-													Salva vidas y brinda atención médica de emergencia
-												</div>
-											</div>
-											<div class="px-6" data-slot="card-content">
-												<div class="space-y-3">
-													<h4 class="text-sm font-semibold text-white/80 uppercase tracking-wider mb-3">Características</h4>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Atención médica de emergencia</p>
-													</div>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Rescate y evacuación</p>
-													</div>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Cirugías y tratamientos</p>
-													</div>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Formación médica especializada</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div style="opacity:0;transform:translateY(30px)">
-										<div class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group bg-white/5 backdrop-blur-md border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-500 hover:shadow-2xl hover:scale-105 shadow-orange-500/20 h-full" data-slot="card">
-											<div class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6" data-slot="card-header">
-												<div class="flex items-start justify-between mb-4">
-													<div class="p-4 rounded-2xl bg-orange-500/10 border border-orange-500/30 group-hover:scale-110 transition-transform">
-														<svg class="lucide lucide-flame w-8 h-8 text-orange-400" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>
-													</div><a class="flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-sm font-medium hover:scale-105 transition-transform" href="https://discord.com/invite/phByZzkCRG" rel="noopener noreferrer" target="_blank"><span>Discord</span><svg class="lucide lucide-external-link w-4 h-4" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="M15 3h6v6"></path>
-													<path d="M10 14 21 3"></path>
-													<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
-												</div>
-												<div class="font-semibold text-2xl text-white mb-2" data-slot="card-title">
-													Bomberos de Chile
-												</div>
-												<div class="text-slate-300 text-base" data-slot="card-description">
-													Combate incendios y responde a emergencias y rescates
-												</div>
-											</div>
-											<div class="px-6" data-slot="card-content">
-												<div class="space-y-3">
-													<h4 class="text-sm font-semibold text-white/80 uppercase tracking-wider mb-3">Características</h4>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-orange-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Combate de incendios estructurales</p>
-													</div>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-orange-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Rescate vehicular</p>
-													</div>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-orange-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Manejo de materiales peligrosos</p>
-													</div>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-orange-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Protección civil</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div style="opacity:0;transform:translateY(30px)">
-										<div class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group bg-white/5 backdrop-blur-md border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-500 hover:shadow-2xl hover:scale-105 shadow-slate-500/20 h-full" data-slot="card">
-											<div class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6" data-slot="card-header">
-												<div class="flex items-start justify-between mb-4">
-													<div class="p-4 rounded-2xl bg-slate-500/10 border border-slate-500/30 group-hover:scale-110 transition-transform">
-														<svg class="lucide lucide-scale w-8 h-8 text-slate-400" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path>
-														<path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path>
-														<path d="M7 21h10"></path>
-														<path d="M12 3v18"></path>
-														<path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path></svg>
-													</div><a class="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-500/10 border border-slate-500/30 text-slate-400 text-sm font-medium hover:scale-105 transition-transform" href="https://discord.com/invite/YgbZvyTCxM" rel="noopener noreferrer" target="_blank"><span>Discord</span><svg class="lucide lucide-external-link w-4 h-4" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="M15 3h6v6"></path>
-													<path d="M10 14 21 3"></path>
-													<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
-												</div>
-												<div class="font-semibold text-2xl text-white mb-2" data-slot="card-title">
-													Fiscalía
-												</div>
-												<div class="text-slate-300 text-base" data-slot="card-description">
-													Administra la justicia y procesa casos legales
-												</div>
-											</div>
-											<div class="px-6" data-slot="card-content">
-												<div class="space-y-3">
-													<h4 class="text-sm font-semibold text-white/80 uppercase tracking-wider mb-3">Características</h4>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-slate-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Representación del estado</p>
-													</div>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-slate-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Procesos judiciales importantes</p>
-													</div>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-slate-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Investigación penal</p>
-													</div>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-slate-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Protección a víctimas</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div style="opacity:0;transform:translateY(30px)">
-										<div class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group bg-white/5 backdrop-blur-md border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-500 hover:shadow-2xl hover:scale-105 shadow-yellow-500/20 h-full" data-slot="card">
-											<div class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6" data-slot="card-header">
-												<div class="flex items-start justify-between mb-4">
-													<div class="p-4 rounded-2xl bg-yellow-500/10 border border-yellow-500/30 group-hover:scale-110 transition-transform">
-														<svg class="lucide lucide-wrench w-8 h-8 text-yellow-400" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-														<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
-													</div><a class="flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 text-sm font-medium hover:scale-105 transition-transform" href="#" rel="noopener noreferrer" target="_blank"><span>Discord</span><svg class="lucide lucide-external-link w-4 h-4" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-													<path d="M15 3h6v6"></path>
-													<path d="M10 14 21 3"></path>
-													<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
-												</div>
-												<div class="font-semibold text-2xl text-white mb-2" data-slot="card-title">
-													Mecánicos (Buscando Director)
-												</div>
-												<div class="text-slate-300 text-base" data-slot="card-description">
-													Repara y personaliza vehículos de todo tipo
-												</div>
-											</div>
-											<div class="px-6" data-slot="card-content">
-												<div class="space-y-3">
-													<h4 class="text-sm font-semibold text-white/80 uppercase tracking-wider mb-3">Características</h4>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-yellow-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Reparación de vehículos</p>
-													</div>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-yellow-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Personalización y tuning</p>
-													</div>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-yellow-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Servicio de grúa</p>
-													</div>
-													<div class="flex items-start gap-3 group/item">
-														<div class="w-1.5 h-1.5 rounded-full bg-yellow-400 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
-														<p class="text-slate-300 text-sm leading-relaxed">Venta de repuestos</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="mt-16 text-center" style="opacity:0">
-									<p class="text-slate-400 text-sm">Para unirte a una facción, contacta con el staff o visita el Discord de la facción que te interese</p>
-								</div>
-							</div>
-						</div>
-					</section>
-					<footer class="md:rounded-t-6xl relative w-full max-w-6xl mx-auto flex flex-col items-center justify-center rounded-t-4xl border-t bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/8%),transparent)] px-6 py-12 lg:py-16" id="facciones">
-						<div class="bg-foreground/20 absolute top-0 right-1/2 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full blur"></div>
-						<div class="grid w-full gap-8 xl:grid-cols-3 xl:gap-8">
-							<div class="space-y-4" style="filter:blur(4px);opacity:0;transform:translateY(-8px)">
-								<img alt="Puro Chile RP Logo" class="size-16" data-nimg="1" height="64" src="/images/puro-chile-logo.png" style="color:transparent" width="64">
-								<div class="text-muted-foreground mt-8 text-sm md:mt-0 md:block hidden">
-									<p>© <!-- -->2025<!-- --> Puro Chile RP. Todos los derechos reservados.</p>
-								</div>
-							</div>
-							<div class="mt-10 grid grid-cols-2 gap-8 md:grid-cols-4 xl:col-span-2 xl:mt-0">
-								<div style="filter:blur(4px);opacity:0;transform:translateY(-8px)">
-									<div class="mb-10 md:mb-0">
-										<h3 class="text-xs">Servidor</h3>
-										<ul class="text-muted-foreground mt-4 space-y-2 text-sm">
-											<li><button class="hover:text-foreground inline-flex items-center transition-all duration-300 text-left">Inicio</button></li>
-											<li><button class="hover:text-foreground inline-flex items-center transition-all duration-300 text-left">Beneficios VIP</button></li>
-											<li><button class="hover:text-foreground inline-flex items-center transition-all duration-300 text-left">Normativas</button></li>
-											<li><button class="hover:text-foreground inline-flex items-center transition-all duration-300 text-left">Facciones</button></li>
-										</ul>
-									</div>
-								</div>
-								<div style="filter:blur(4px);opacity:0;transform:translateY(-8px)">
-									<div class="mb-10 md:mb-0">
-										<h3 class="text-xs">Normativas</h3>
-										<ul class="text-muted-foreground mt-4 space-y-2 text-sm">
-											<li><button class="hover:text-foreground inline-flex items-center transition-all duration-300 text-left">Roleplay</button></li>
-											<li><button class="hover:text-foreground inline-flex items-center transition-all duration-300 text-left">Discord</button></li>
-											<li><button class="hover:text-foreground inline-flex items-center transition-all duration-300 text-left">Curaciones</button></li>
-											<li><button class="hover:text-foreground inline-flex items-center transition-all duration-300 text-left">Bandas</button></li>
-										</ul>
-									</div>
-								</div>
-								<div style="filter:blur(4px);opacity:0;transform:translateY(-8px)">
-									<div class="mb-10 md:mb-0">
-										<h3 class="text-xs">Más Normativas</h3>
-										<ul class="text-muted-foreground mt-4 space-y-2 text-sm">
-											<li><button class="hover:text-foreground inline-flex items-center transition-all duration-300 text-left">CK (Character Kill)</button></li>
-											<li><button class="hover:text-foreground inline-flex items-center transition-all duration-300 text-left">Secuestro y Máscaras</button></li>
-											<li><button class="hover:text-foreground inline-flex items-center transition-all duration-300 text-left">Vehículos VIP</button></li>
-										</ul>
-									</div>
-								</div>
-								<div style="filter:blur(4px);opacity:0;transform:translateY(-8px)">
-									<div class="mb-10 md:mb-0">
-										<h3 class="text-xs">Comunidad</h3>
-										<ul class="text-muted-foreground mt-4 space-y-2 text-sm">
-											<li><button class="hover:text-foreground inline-flex items-center transition-all duration-300 text-left"><svg class="lucide lucide-message-circle me-1 size-4" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-											<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>Discord Oficial</button></li>
-											<li><button class="hover:text-foreground inline-flex items-center transition-all duration-300 text-left">Solicitar Whitelist</button></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="md:hidden mt-8 text-center space-y-2">
-							<p class="text-muted-foreground text-sm">© <!-- -->2025<!-- --> Puro Chile RP. Todos los derechos reservados.</p>
-							<p class="text-muted-foreground text-xs">Desarrollado por Mati</p>
-						</div>
-						<div class="hidden md:block mt-8 pt-6 border-t border-foreground/10 w-full">
-							<p class="text-muted-foreground text-xs text-center">Desarrollado por Mati</p>
-						</div>
-					</footer>
-				</div>
-			</main>
-		</div>
-	</div><!--/$-->
-	<script async src="/_next/static/chunks/webpack-6b8446038fb6a32a.js">
-	</script>
-	<script>
-	(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])
-	</script>
-	<script>
-	self.__next_f.push([1,"1:HL[\"/_next/static/media/0e9d289c6eb42bf7-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/_next/static/media/46bdd75a3ff56824-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n3:HL[\"/_next/static/css/416ecb03a6d5e87c.css\",\"style\"]\n4:HL[\"/_next/static/css/2f9e414a1a773844.css\",\"style\"]\n5:HL[\"/_next/static/css/ba4e0c7f3070082d.css\",\"style\"]\n6:HL[\"/_next/static/css/08e78f16145911c4.css\",\"style\"]\n"])
-	</script>
-	<script>
-	self.__next_f.push([1,"7:I[7055,[],\"\"]\n9:I[9614,[\"556\",\"static/chunks/556-9132c3a3470eb08e.js\",\"294\",\"static/chunks/294-b09f02b94f6729d6.js\",\"630\",\"static/chunks/630-e54cd51aa2a7fe79.js\",\"679\",\"static/chunks/679-f921a3a5125310a4.js\",\"701\",\"static/chunks/701-a5c67da14ceff8ed.js\",\"408\",\"static/chunks/408-2da0e2e2e48df6be.js\",\"931\",\"static/chunks/app/page-ea486633d6950d25.js\"],\"default\"]\na:I[5104,[\"556\",\"static/chunks/556-9132c3a3470eb08e.js\",\"294\",\"static/chunks/294-b09f02b94f6729d6.js\",\"630\",\"static/chunks/630-e54cd51aa2a7fe79.js\",\"679\",\"static/chunks/679-f921a3a5125310a4.js\",\"701\",\"static/chunks/701-a5c67da14ceff8ed.js\",\"408\",\"static/chunks/408-2da0e2e2e48df6be.js\",\"931\",\"static/chunks/app/page-ea486633d6950d25.js\"],\"GlassmorphismNav\"]\nb:I[1486,[\"556\",\"static/chunks/556-9132c3a3470eb08e.js\",\"294\",\"static/chunks/294-b09f02b94f6729d6.js\",\"630\",\"static/chunks/630-e54cd51aa2a7fe79.js\",\"679\",\"static/chunks/679-f921a3a5125310a4.js\",\"701\",\"static/chunks/701-a5c67da14ceff8ed.js\",\"408\",\"static/chunks/408-2da0e2e2e48df6be.js\",\"931\",\"static/chunks/app/page-ea486633d6950d25.js\"],\"HeroSection\"]\nc:I[1100,[\"556\",\"static/chunks/556-9132c3a3470eb08e.js\",\"294\",\"static/chunks/294-b09f02b94f6729d6.js\",\"630\",\"static/chunks/630-e54cd51aa2a7fe79.js\",\"679\",\"static/chunks/679-f921a3a5125310a4.js\",\"701\",\"static/chunks/701-a5c67da14ceff8ed.js\",\"408\",\"static/chunks/408-2da0e2e2e48df6be.js\",\"931\",\"static/chunks/app/page-ea486633d6950d25.js\"],\"BeneficiosSection\"]\nd:I[5848,[\"556\",\"static/chunks/556-9132c3a3470eb08e.js\",\"294\",\"static/chunks/294-b09f02b94f6729d6.js\",\"630\",\"static/chunks/630-e54cd51aa2a7fe79.js\",\"679\",\"static/chunks/679-f921a3a5125310a4.js\",\"701\",\"static/chunks/701-a5c67da14ceff8ed.js\",\"408\",\"static/chunks/408-2da0e2e2e48df6be.js\",\"931\",\"static/chunks/app/page-ea486633d6950d25.js\"],\"NormativasSection\"]\ne:I[5511,[\"556\",\"static/chunks/556-9132c3a3470eb08e.js\",\"294\",\"static/chunks/294-b09f02b94f6729d6.js\",\"630\",\"static/chunks/630-e54cd51aa2a7fe79.js\",\"679\",\"static/chunks/679-f921a3a5125310a4.js\",\"701\",\"static/chunks/701-a5c67da14ceff8ed.js\",\"408\",\"static/"])
-	</script>
-	<script>
-	self.__next_f.push([1,"chunks/408-2da0e2e2e48df6be.js\",\"931\",\"static/chunks/app/page-ea486633d6950d25.js\"],\"FaccionesSection\"]\nf:I[2883,[\"556\",\"static/chunks/556-9132c3a3470eb08e.js\",\"294\",\"static/chunks/294-b09f02b94f6729d6.js\",\"630\",\"static/chunks/630-e54cd51aa2a7fe79.js\",\"679\",\"static/chunks/679-f921a3a5125310a4.js\",\"701\",\"static/chunks/701-a5c67da14ceff8ed.js\",\"408\",\"static/chunks/408-2da0e2e2e48df6be.js\",\"931\",\"static/chunks/app/page-ea486633d6950d25.js\"],\"Footer\"]\n10:\"$Sreact.suspense\"\n11:I[7726,[\"185\",\"static/chunks/app/layout-bd2c202d14238cc9.js\"],\"NavigationTransition\"]\n12:I[8211,[\"185\",\"static/chunks/app/layout-bd2c202d14238cc9.js\"],\"PageTransition\"]\n13:I[4873,[],\"\"]\n14:I[5956,[],\"\"]\n16:I[635,[],\"\"]\n17:[]\n"])
-	</script>
-	<script>
-	self.__next_f.push([1,"0:[\"$\",\"$L7\",null,{\"buildId\":\"PUYnZnZB-eZFjT47-aoqS\",\"assetPrefix\":\"\",\"urlParts\":[\"\",\"\"],\"initialTree\":[\"\",{\"children\":[\"__PAGE__\",{}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"__PAGE__\",{},[[\"$L8\",[\"$\",\"div\",null,{\"className\":\"min-h-screen bg-black overflow-hidden\",\"children\":[\"$\",\"main\",null,{\"className\":\"min-h-screen relative overflow-hidden\",\"children\":[[\"$\",\"div\",null,{\"className\":\"fixed inset-0 w-full h-full\",\"children\":[\"$\",\"$L9\",null,{\"colorStops\":[\"#475569\",\"#64748b\",\"#475569\"],\"amplitude\":1.2,\"blend\":0.6,\"speed\":0.8}]}],[\"$\",\"div\",null,{\"className\":\"relative z-10\",\"children\":[[\"$\",\"$La\",null,{}],[\"$\",\"$Lb\",null,{}],[\"$\",\"$Lc\",null,{}],[\"$\",\"$Ld\",null,{}],[\"$\",\"$Le\",null,{}],[\"$\",\"$Lf\",null,{}]]}]]}]}],[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/ba4e0c7f3070082d.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}],[\"$\",\"link\",\"1\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/08e78f16145911c4.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]]],null],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/416ecb03a6d5e87c.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}],[\"$\",\"link\",\"1\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/2f9e414a1a773844.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"className\":\"dark\",\"children\":[\"$\",\"body\",null,{\"className\":\"font-sans antialiased __variable_b75cb0 __variable_97f5e1\",\"children\":[\"$\",\"$10\",null,{\"fallback\":null,\"children\":[[\"$\",\"$L11\",null,{}],[\"$\",\"$L12\",null,{\"children\":[\"$\",\"$L13\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L14\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}]}]]}]}]}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$L15\"],\"globalErrorComponent\":\"$16\",\"missingSlots\":\"$W17\"}]\n"])
-	</script>
-	<script>
-	self.__next_f.push([1,"15:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"Puro Chile RP - Servidor de Roleplay\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\"Únete a la mejor experiencia de roleplay en Chile. Servidor de Roblox con normativas claras y comunidad activa.\"}],[\"$\",\"meta\",\"4\",{\"name\":\"generator\",\"content\":\"v0.app\"}],[\"$\",\"meta\",\"5\",{\"name\":\"next-size-adjust\"}]]\n8:null\n"])
-	</script>
+<body>
+
+  <!-- CANVAS PARA PARTICULAS EN FONDO -->
+  <canvas id="bg-canvas" style="position:fixed; inset:0; width:100%; height:100%; z-index:1; display:block;"></canvas>
+
+  <div class="container" role="main">
+    <!-- NAV -->
+    <nav class="nav" aria-label="Navegación principal">
+      <div class="brand">
+        <div class="logo">ER:LC</div>
+        <div>
+          <h1>Argentina RP ┊ ER:LC</h1>
+          <div style="font-size:12px; color:var(--muted); margin-top:4px">Comunidad de Discord - Roleplay</div>
+        </div>
+      </div>
+
+      <!-- Desktop links -->
+      <div class="nav-links" id="nav-links">
+        <a href="#inicio" class="underline-accent">Inicio</a>
+
+        <!-- ==== LINK DE NORMATIVAS (EDITABLE) ====
+             Pegar el enlace de Google Doc aquí -> data-norm-link
+             Ej: "https://docs.google.com/document/d/XXXXX"
+        -->
+        <a href="#" id="normativas-link" https://www.canva.com/design/DAG1z80J_O8/dAimr2cXpgcwnpMevlf41w/edit?utm_content=DAG1z80J_O8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton="https://docs.google.com/" target="_blank">Normativas</a>
+
+        <a href="#memberships" class="underline-accent">Membersias</a>
+
+        <!-- ==== ENLACE GRUPO ROBLOX (EDITABLE) ====
+             Pegar el enlace del grupo Roblox en data-roblox-link.
+             Ej: "https://www.roblox.com/groups/XXXX"
+        -->
+        <a href="#" id="" data-roblox-link="https://www.roblox.com/" target="_blank">Grupo Roblox</a>
+
+        <!-- ==== ENLACE DISCORD (EDITABLE) ====
+             Pegar el enlace de invitación a Discord en data-discord-link.
+             Ej: "https://discord.gg/tu-invite"
+        -->
+        <a href="#" id="discord-link" data-discord-link="https://discord.com/" class="cta" target="_blank">Unirse a Discord</a>
+      </div>
+
+      <!-- Botón móvil -->
+      <button class="mobile-menu-btn" id="mobile-toggle">Menu ☰</button>
+    </nav>
+
+    <!-- Mobile menu (hidden en desktop) -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#inicio">Inicio</a>
+      <a href="#" id="normativas-link-mob">Normativas</a>
+      <a href="#memberships">Membersias</a>
+      <a href="#" id="roblox-link-mob">Grupo Roblox</a>
+      <a href="#" id="discord-link-mob">Unirse a Discord</a>
+    </div>
+
+    <!-- HERO / INICIO -->
+    <section id="inicio" class="hero" aria-labelledby="titulo-hero">
+      <div class="hero-left">
+        <!-- Texto central (EDITABLE) -->
+        <h2 id="titulo-hero">
+          🎉┊Argentina RP┊ER:LC
+          <span style="font-size:18px; color:var(--muted); font-weight:700; margin-top:8px">Únete a la mejor comunidad de Argentina</span>
+        </h2>
+
+        <!-- Información de la comunidad: EDITAR EL TEXTO ABAJO -->
+        <div class="info" id="info-comunidad" contenteditable="false" aria-label="Información de la comunidad">
+          <!-- --> 
+          <strong>Información de la Comunidad</strong>
+          <p style="margin-top:8px; color:var(--muted); line-height:1.5;">
+            Aquí podés escribir la descripción de tu comunidad. Cambiá este texto directamente en el HTML (dentro del elemento <code>&lt;div id="info-comunidad"&gt;</code>) para mostrar horarios, reglas rápidas o links importantes. 
+          </p>
+        </div>
+
+      </div>
+
+      <!-- A la derecha podés poner una imagen o tarjeta -->
+      <div style="width:320px; max-width:40%; min-width:220px;">
+        <div style="padding:18px; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.008)); border:1px solid rgba(255,255,255,0.02)">
+          <h3 style="margin:0 0 8px 0;">Bienvenido</h3>
+          <p style="margin:0 0 12px 0; color:var(--muted)">Este lugar está pensado para jugadores de ER:LC que buscan roleplay serio y comunidad.</p>
+          <a id="btn-join" class="cta" href="#" target="_blank">Unirse al Discord</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMBERSHIPS -->
+    <section id="memberships" style="margin-top:24px;">
+      <h2 style="margin:0 0 12px 0">Membersias</h2>
+      <div style="color:var(--muted); margin-bottom:10px">Elige la membresía que prefieras — los botones de comprar tienen enlaces editables en el HTML.</div>
+
+      <div class="memberships">
+        <!-- Membresía 1 -->
+        <div class="card">
+          <h3>Membresía 1</h3>
+          <div class="price">50 Robux</div>
+          <p style="color:var(--muted); margin-bottom:14px">Beneficios: prefix en el servidor, canal exclusivo de chat.</p>
+          <!-- EDITA data-buy-link con tu URL de pago -->
+          <a class="buy-btn" href="#" data-buy-link="https://www.tupago.com/compra1" target="_blank">Comprar</a>
+        </div>
+
+        <!-- Membresía 2 -->
+        <div class="card">
+          <h3>Membresía 2</h3>
+          <div class="price">100 Robux</div>
+          <p style="color:var(--muted); margin-bottom:14px">Beneficios: todo lo anterior + rol destacado en Discord.</p>
+          <a class="buy-btn" href="#" data-buy-link="https://www.tupago.com/compra2" target="_blank">Comprar</a>
+        </div>
+
+        <!-- Membresía 3 -->
+        <div class="card">
+          <h3>Membresía 3</h3>
+          <div class="price">250 Robux</div>
+          <p style="color:var(--muted); margin-bottom:14px">Beneficios: roles, canal VIP, prioridad en eventos.</p>
+          <a class="buy-btn" href="#" data-buy-link="https://www.tupago.com/compra3" target="_blank">Comprar</a>
+        </div>
+
+        <!-- Membresía 4 -->
+        <div class="card">
+          <h3>Membresía 4</h3>
+          <div class="price">500 Robux</div>
+          <p style="color:var(--muted); margin-bottom:14px">Beneficios: todo lo anterior + acceso a eventos privados y roles especiales.</p>
+          <a class="buy-btn" href="#" data-buy-link="https://www.tupago.com/compra4" target="_blank">Comprar</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="anio"></span> Argentina RP ┊ ER:LC — Hecho con ❤️
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // ====== FECHAS, LINKS EDITABLES Y ASIGNACIONES ======
+    document.getElementById('anio').textContent = new Date().getFullYear();
+
+    // Normativas: enlace editable -> cambiar el atributo data-norm-link en el HTML (nav)
+    const normBtn = document.getElementById('normativas-link');
+    const normMobile = document.getElementById('normativas-link-mob');
+    const normLink = normBtn.getAttribute('data-norm-link');
+    normBtn.href = normLink;
+    normMobile.href = normLink;
+
+    // Grupo Roblox: enlace editable -> cambiar data-roblox-link
+    const robloxBtn = document.getElementById('roblox-link');
+    const robloxMobile = document.getElementById('roblox-link-mob');
+    const robloxLink = robloxBtn.getAttribute('data-roblox-link');
+    robloxBtn.href = robloxLink;
+    robloxMobile.href = robloxLink;
+
+    // Discord: enlace editable -> cambiar data-discord-link
+    const discordBtn = document.getElementById('discord-link');
+    const discordMobile = document.getElementById('discord-link-mob');
+    const discordLink = discordBtn.getAttribute('data-discord-link');
+    discordBtn.href = discordLink;
+    discordMobile.href = discordLink;
+
+    // Botón "Unirse al Discord" del hero
+    const btnJoin = document.getElementById('btn-join');
+    btnJoin.href = discordLink;
+
+    // Links de "Comprar": toman el atributo data-buy-link que podés editar en cada tarjeta
+    document.querySelectorAll('.buy-btn').forEach(el => {
+      const buy = el.getAttribute('data-buy-link') || '#';
+      el.href = buy;
+    });
+
+    // ====== MENÚ MÓVIL ======
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileToggle?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('show');
+    });
+
+    // ====== SMOOTH SCROLL para anchors ======
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+
+    // ====== PARTICLES EN CANVAS (fondo) ======
+    // Ligero, sin librerías. Podés ajustar la cantidad o color.
+    (function(){
+      const canvas = document.getElementById('bg-canvas');
+      const ctx = canvas.getContext('2d');
+      let w=canvas.width=innerWidth;
+      let h=canvas.height=innerHeight;
+      const particles = [];
+      const PARTICLE_COUNT = Math.min(120, Math.floor((w*h)/8000)); // se adapta a tamaño pantalla
+
+      const colors = [
+        'rgba(255,107,53,0.14)',
+        'rgba(40,150,255,0.07)',
+        'rgba(255,255,255,0.03)'
+      ];
+
+      function rand(min,max){ return Math.random()*(max-min)+min; }
+
+      function createParticle(){
+        return {
+          x: rand(0,w),
+          y: rand(0,h),
+          vx: rand(-0.25,0.25),
+          vy: rand(-0.1,0.6),
+          r: rand(0.6,2.8),
+          color: colors[Math.floor(Math.random()*colors.length)],
+          life: rand(60,280),
+          ttl: 0
+        };
+      }
+
+      for(let i=0;i<PARTICLE_COUNT;i++) particles.push(createParticle());
+
+      function resize(){
+        w=canvas.width=innerWidth;
+        h=canvas.height=innerHeight;
+      }
+      window.addEventListener('resize', resize);
+
+      // Mouse interaction (subtle)
+      const mouse = {x:-9999,y:-9999};
+      window.addEventListener('mousemove', e => { mouse.x=e.clientX; mouse.y=e.clientY; });
+      window.addEventListener('mouseout', ()=>{ mouse.x=-9999; mouse.y=-9999; });
+
+      function draw(){
+        ctx.clearRect(0,0,w,h);
+
+        // sutil overlay para dar sensación de profundidad
+        ctx.fillStyle = 'rgba(5,8,12,0.45)';
+        ctx.fillRect(0,0,w,h);
+
+        particles.forEach(p=>{
+          p.x += p.vx;
+          p.y -= p.vy; // suben levemente
+          p.ttl++;
+
+          // respawn si sale de pantalla o vida
+          if(p.x < -20 || p.x > w+20 || p.y < -20 || p.y > h+20 || p.ttl > p.life){
+            Object.assign(p, createParticle());
+            p.y = h + 10;
+            p.ttl = 0;
+          }
+
+          // interacción con mouse
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const dist = Math.sqrt(dx*dx + dy*dy);
+          if(dist < 90){
+            p.x += (dx/dist) * 0.6;
+            p.y += (dy/dist) * 0.6;
+          }
+
+          // dibujar
+          ctx.beginPath();
+          ctx.fillStyle = p.color;
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+          ctx.fill();
+        });
+
+        requestAnimationFrame(draw);
+      }
+
+      draw();
+    })();
+
+    // ====== ÚLTIMAS NOTAS (edición) ======
+    // - Para editar el link de Normativas -> modificá data-norm-link en el elemento <a id="normativas-link" ...>
+    // - Para editar Grupo Roblox -> data-roblox-link en <a id="roblox-link" ...>
+    // - Para editar Discord -> data-discord-link en <a id="discord-link" ...>
+    // - Para cambiar los links de compra -> editar data-buy-link en cada <a class="buy-btn" ...>
+    // - Para cambiar favicon -> editar la ruta en <link rel="icon" href="...">
+  </script>
 </body>
 </html>
