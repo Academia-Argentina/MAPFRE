@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Argentina RP ┊ ER:LC</title>
 
-  <!-- ========== FAVICON ==========
-       Reemplaza "ruta/a/tu-favicon.png" por la URL o ruta local de tu favicon.
-       Si no querés cambiar ahora, dejalo así y el navegador mostrará el default. -->
+  <!-- FAVICON -->
   <link rel="icon" href="https://images-ext-1.discordapp.net/external/KqfyaYjeenvTHeaybPox0LT-APjdtSX-RoFyrrlZsfs/%3Fsize%3D4096/https/cdn.discordapp.com/avatars/1255946816898207834/18a5536133ff77c46881558ccbc4ff0b.png?format=webp&quality=lossless&width=527&height=527" />
 
   <!-- ====== ESTILOS ====== -->
@@ -15,456 +13,215 @@
     :root{
       --bg-1: #071021;
       --bg-2: #0d1724;
-      --card: rgba(255,255,255,0.02);
       --muted: #9fb0c8;
       --accent: #ff6b35;
       --accent-2: #24a0ff;
-      --glass: rgba(255,255,255,0.03);
       --radius: 14px;
       --max-width: 1180px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      font-family: Inter, ui-sans-serif, system-ui;
     }
     *{box-sizing:border-box}
-    html,body{height:100%; margin:0; background:linear-gradient(180deg,var(--bg-1), var(--bg-2)); color:#e6eef6; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
-
-    /* animated gradient overlay */
-    .bg-gradient {
-      position:fixed;
-      inset:0;
-      background: radial-gradient(600px 600px at 10% 20%, rgba(36,160,255,0.06), transparent 12%),
-                  radial-gradient(500px 500px at 90% 80%, rgba(255,107,53,0.06), transparent 12%);
-      z-index:0;
-      pointer-events:none;
-      animation: float-grad 12s linear infinite;
-    }
-    @keyframes float-grad{
-      0%{transform:translateY(0) rotate(0deg);}
-      50%{transform:translateY(-20px) rotate(3deg);}
-      100%{transform:translateY(0) rotate(0deg);}
+    html,body{
+      height:100%; margin:0;
+      background:linear-gradient(180deg,var(--bg-1), var(--bg-2));
+      color:#e6eef6;
     }
 
-    /* Container */
     .container{
       max-width:var(--max-width);
       margin:18px auto;
       padding:18px;
       position:relative;
-      z-index:3; /* encima del fondo */
+      z-index:3;
     }
 
     /* NAV */
     .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:12px 16px;
-      border-radius:12px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 16px; border-radius:12px;
+      background: rgba(255,255,255,0.035);
       backdrop-filter: blur(6px);
-      border:1px solid rgba(255,255,255,0.03);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
-      transition: transform .18s ease, box-shadow .18s ease;
+      border:1px solid rgba(255,255,255,0.04);
     }
-    .nav:hover{ transform:translateY(-2px) }
-
     .brand{display:flex; gap:12px; align-items:center}
     .logo {
-      width:48px; height:48px; border-radius:12px;
-      display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px;
-      color:var(--bg-2);
+      width:48px; height:48px;
+      border-radius:12px;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:800; font-size:14px;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 6px 18px rgba(0,0,0,0.5);
     }
-    .brand h1{margin:0; font-size:16px; letter-spacing:0.6px}
-    .brand small{display:block; color:var(--muted); font-size:12px; margin-top:4px}
+    .brand h1{margin:0; font-size:16px;}
+    .brand small{display:block; color:var(--muted); font-size:12px;}
 
-    .nav-links{display:flex; gap:10px; align-items:center}
+    .nav-links{display:flex; gap:12px;}
     .nav-links a{
-      padding:8px 12px; border-radius:10px; font-weight:700; color:var(--muted);
-      transition: transform .18s ease, color .18s ease, box-shadow .18s ease;
-      position:relative;
-      overflow:visible;
+      padding:8px 12px; border-radius:10px;
+      font-weight:700; color:var(--muted);
+      transition: .2s;
     }
-    .nav-links a::after{
-      content:""; position:absolute; left:8px; right:8px; bottom:-6px; height:3px; border-radius:6px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity:0; transform:translateY(8px); transition:all .28s ease;
-    }
-    .nav-links a:hover{ color:#fff; transform:translateY(-4px); }
-    .nav-links a:hover::after{ opacity:1; transform:translateY(0); }
-
+    .nav-links a:hover{color:#fff; background:rgba(255,255,255,0.05);}
     .cta{
-      padding:8px 14px; border-radius:12px; background:linear-gradient(90deg, rgba(255,107,53,0.12), rgba(36,160,255,0.06));
-      color:var(--accent); border:1px solid rgba(255,107,53,0.12); font-weight:800;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+      background:rgba(255,107,53,0.12);
+      border:1px solid rgba(255,107,53,0.12);
+      color:var(--accent);
+      border-radius:10px;
     }
 
-    /* Hero */
+    /* HERO */
     .hero{
       display:flex; gap:20px; align-items:center; justify-content:space-between;
       margin-top:22px; padding:30px; border-radius:16px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.008));
+      background: rgba(255,255,255,0.02);
       border:1px solid rgba(255,255,255,0.02);
-      box-shadow: 0 18px 60px rgba(0,0,0,0.55);
-      position:relative; overflow:hidden;
     }
-    /* subtle animated lines in hero */
-    .hero::before{
-      content:""; position:absolute; inset:0; background-image: linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
-      background-size: 60px 60px; opacity:0.6; mix-blend-mode: overlay; pointer-events:none;
-      transform: translateY(0); animation: heroLines 14s linear infinite;
-    }
-    @keyframes heroLines{ 0%{transform:translateX(0)} 100%{transform:translateX(-120px)} }
-
-    .hero-left{flex:1; min-width:240px}
-    .hero h2{
-      margin:0; font-size:34px; line-height:1.02; letter-spacing:0.6px;
-      display:flex; flex-direction:column; gap:8px; animation: fadeUp .8s ease both;
-    }
-    @keyframes fadeUp{ from{opacity:0; transform:translateY(12px)} to{opacity:1; transform:translateY(0)} }
-    .hero .subtitle{ font-size:18px; color:var(--muted); margin-top:8px; font-weight:700; }
+    .hero-left{flex:1;}
+    .hero h2{margin:0; font-size:34px;}
+    .subtitle{font-size:18px; color:var(--muted)}
 
     .info{
-      margin-top:16px; padding:14px; border-radius:12px; color:var(--muted);
-      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.008));
+      margin-top:16px; padding:14px; border-radius:12px;
+      background: rgba(255,255,255,0.02);
       border:1px solid rgba(255,255,255,0.02);
-      transition: transform .18s ease;
+      color:var(--muted);
     }
-    .info:hover{ transform:translateY(-6px) }
 
-    /* Right panel hero card */
     .hero-card{
-      width:320px; max-width:38%; min-width:220px; border-radius:12px; padding:18px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      width:300px; padding:18px;
+      border-radius:12px;
+      background: rgba(255,255,255,0.02);
       border:1px solid rgba(255,255,255,0.02);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
     }
-    .hero-card h3{margin:0 0 6px 0}
-    .hero-card p{color:var(--muted); margin:0 0 12px 0}
 
     /* MEMBERSHIPS */
     .memberships{
-      margin-top:30px; display:grid; grid-template-columns: repeat(4, 1fr); gap:16px;
-      transition: all .18s ease;
+      margin-top:30px;
+      display:grid; gap:16px;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
     }
     .card{
-      padding:18px; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.008));
-      border:1px solid rgba(255,255,255,0.02); box-shadow: 0 12px 36px rgba(0,0,0,0.5);
-      transition: transform .22s cubic-bezier(.16,.8,.25,1), box-shadow .22s;
+      padding:18px; border-radius:12px;
+      background: rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.02);
+      transition:.2s;
     }
-    .card:hover{ transform: translateY(-10px) scale(1.02); box-shadow: 0 28px 60px rgba(0,0,0,0.6); }
-    .card h3{ margin:0 0 8px 0; color:#fff }
-    .price{ font-weight:900; font-size:20px; color:var(--accent); margin-bottom:10px }
-    .card p{ color:var(--muted); margin:0 0 14px 0; line-height:1.4; }
-
+    .card:hover{transform:translateY(-4px);}
+    .price{font-size:20px; font-weight:900; color:var(--accent);}
+    .badge{
+      font-size:12px; padding:4px 6px;
+      background:rgba(36,160,255,0.12);
+      border-radius:6px;
+      margin-left:6px;
+    }
     .buy-btn{
-      display:inline-block; padding:10px 14px; border-radius:10px; font-weight:800;
-      background: linear-gradient(90deg, rgba(255,107,53,0.12), rgba(36,160,255,0.06));
-      color:var(--accent); border:1px solid rgba(255,107,53,0.12);
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-    .buy-btn:hover{ transform:translateY(-6px); box-shadow: 0 12px 36px rgba(255,107,53,0.08); }
-
-    /* animated badge for price */
-    .badge {
-      display:inline-block; padding:6px 8px; border-radius:8px; font-weight:800; font-size:12px;
-      background: linear-gradient(90deg, rgba(36,160,255,0.08), rgba(255,107,53,0.06));
-      color:var(--accent-2); margin-left:8px;
-      animation: pulse 2.2s ease-in-out infinite;
-    }
-    @keyframes pulse{ 0%{transform:translateY(0)} 50%{transform:translateY(-6px)} 100%{transform:translateY(0)} }
-
-    /* Footer */
-    footer{ margin-top:28px; color:var(--muted); font-size:13px; text-align:center; padding:20px; }
-
-    /* RESPONSIVE */
-    @media (max-width:1000px){
-      .memberships{ grid-template-columns: repeat(2, 1fr); }
-      .hero{ flex-direction:column; align-items:flex-start }
-      .nav-links{ display:none; }
-      .mobile-menu-btn{ display:inline-block; }
-    }
-    @media (max-width:560px){
-      .memberships{ grid-template-columns: 1fr; }
-      .hero-card{ width:100% }
-      .brand h1{ font-size:15px }
+      display:inline-block; margin-top:8px; padding:10px 14px;
+      border-radius:10px; font-weight:800;
+      background:rgba(255,107,53,0.12);
+      border:1px solid rgba(255,107,53,0.12);
+      color:var(--accent); text-decoration:none;
     }
 
-    /* Mobile menu */
-    .mobile-menu-btn{ display:none; background:transparent; border:0; color:var(--muted); font-weight:800; padding:8px 10px; border-radius:8px; }
-    .mobile-menu{ display:none; gap:10px; margin-top:12px; flex-direction:column; }
-    .mobile-menu a{ padding:8px 12px; border-radius:9px; background:var(--card); color:var(--muted) }
-    .mobile-menu.show{ display:flex; }
-
-    /* small helper */
-    .muted { color: var(--muted); }
+    footer{text-align:center; margin-top:28px; color:var(--muted); font-size:14px;}
   </style>
 </head>
+
 <body>
 
-  <!-- Fondo en movimiento y gradientes -->
-  <div class="bg-gradient" aria-hidden="true"></div>
+  <div class="container">
 
-  <!-- CANVAS para partículas sutiles (por debajo del contenido) -->
-  <canvas id="bg-canvas" style="position:fixed; inset:0; width:100%; height:100%; z-index:1; display:block;"></canvas>
-
-  <div class="container" role="main">
     <!-- NAV -->
-    <nav class="nav" aria-label="Navegación principal">
+    <nav class="nav">
       <div class="brand">
-        <div class="logo" aria-hidden="true">ER:LC</div>
+        <div class="logo">ER:LC</div>
         <div>
           <h1>Argentina RP ┊ ER:LC</h1>
           <small>Página oficial de Argentina · Roleplay · ER:LC</small>
         </div>
       </div>
 
-      <!-- ===== ENLACES EDITADOS AUTOMÁTICAMENTE CON LOS LINKS QUE ME DISTE ===== -->
-      <div class="nav-links" id="nav-links">
+      <div class="nav-links">
         <a href="#inicio">Inicio</a>
-
-        <!-- Normativas: abre el Google/Canva link (link proporcionado por vos) -->
-        <a href="#" id="normativas-link" data-norm-link="https://www.canva.com/design/DAG1z80J_O8/dAimr2cXpgcwnpMevlf41w/edit?utm_content=DAG1z80J_O8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">Normativas</a>
-
+        <a href="https://www.canva.com/design/DAG1z80J_O8/dAimr2cXpgcwnpMevlf41w/edit?utm_content=DAG1z80J_O8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">Normativas</a>
         <a href="#memberships">Membersias</a>
-
-        <!-- Grupo Roblox: link proporcionado por vos -->
-        <a href="#" id="roblox-link" data-roblox-link="https://www.roblox.com/es/communities/33453357/Argentina-RP-Spanish-ER-LC#!/about" target="_blank">Grupo Roblox</a>
-
-        <!-- Discord: link proporcionado por vos -->
-        <a href="#" id="discord-link" data-discord-link="https://discord.gg/argentinarp" class="cta" target="_blank">Unirse a Discord</a>
+        <a href="https://www.roblox.com/es/communities/33453357/Argentina-RP-Spanish-ER-LC#!/about" target="_blank">Grupo Roblox</a>
+        <a href="https://discord.gg/argentinarp" class="cta" target="_blank">Unirse a Discord</a>
       </div>
-
-      <!-- Botón móvil -->
-      <button class="mobile-menu-btn" id="mobile-toggle">Menu ☰</button>
     </nav>
 
-    <!-- Mobile menu -->
-    <div class="mobile-menu" id="mobile-menu">
-      <a href="#inicio">Inicio</a>
-      <a href="#" id="normativas-link-mob">Normativas</a>
-      <a href="#memberships">Membersias</a>
-      <a href="#" id="roblox-link-mob">Grupo Roblox</a>
-      <a href="#" id="discord-link-mob">Unirse a Discord</a>
-    </div>
-
     <!-- HERO -->
-    <section id="inicio" class="hero" aria-labelledby="titulo-hero">
+    <section id="inicio" class="hero">
       <div class="hero-left">
-        <!-- Texto central -->
-        <h2 id="titulo-hero">
-          🎉┊Argentina RP┊ER:LC
-          <span class="subtitle">¿Queres saber sobre nosotros?⤵️</span>
-        </h2>
+        <h2>🎉┊Argentina RP┊ER:LC<br><span class="subtitle">¿Queres saber sobre nosotros?⤵️</span></h2>
 
-        <!-- Información de la comunidad: EDITAR este texto directamente en el HTML -->
-        <div class="info" id="info-comunidad" aria-label="Información de la Comunidad">
+        <div class="info">
           <strong>Bienvenido a Argentina RP┊ER:LC 🇦🇷</strong>
-          <p style="margin-top:8px; color:var(--muted); line-height:1.5;">
-            ¡Bienvenido! Somos Argentina RP, una comunidad dedicada al roleplay inspirado en Emergency Response: Liberty County. En nuestra comunidad encontraras eventos, facciones legales como Policia De La Ciudad, Gendarmeria, Policia Federal Argentina y mucho más...
+          <p>
+            ¡Bienvenido! Somos Argentina RP, una comunidad dedicada al roleplay
+            inspirado en Emergency Response: Liberty County. Encontrarás eventos,
+            facciones legales como Policía de la Ciudad, Gendarmería, Policía Federal
+            Argentina y mucho más.
             <br><br>
-            Para unirte a nuestra comunidad es muy facil y rápido, simplemente debes dar click en <strong>Unirse a discord</strong> y podrás crearte un DNI y pronto para vivir la mejor experiencia del roleplay.
+            Para unirte es fácil, clic en <strong>Unirse a Discord</strong> y
+            vas a poder crear tu DNI y empezar a jugar.
             <br><br>
-            Recordá leer la normativa de Discord y del Roleplay para no cometer faltas y evitar ser sancionado.
+            Recordá leer las normativas para evitar sanciones.
           </p>
         </div>
       </div>
 
-      <!-- RIGHT: hero card con imagen de ejemplo + botón -->
-      <div class="hero-card" aria-hidden="false">
-        <h3>¡Unete a Discord!⤵️</h3>
-        <p class="muted">Unite al Discord, conocé la comunidad y participá en los próximos eventos.</p>
-        <a id="btn-join" class="cta" href="#" target="_blank" style="display:inline-block; margin-top:8px;">Unirse al Discord</a>
+      <div class="hero-card">
+        <h3>¡Unite a Discord!⤵️</h3>
+        <p>Conocé la comunidad y participá de los próximos eventos.</p>
+        <a class="cta" href="https://discord.gg/argentinarp" target="_blank">Unirse al Discord</a>
       </div>
     </section>
 
     <!-- MEMBERSHIPS -->
     <section id="memberships" style="margin-top:28px;">
-      <h2 style="margin:0 0 12px 0">Membersias</h2>
-      <div style="color:var(--muted); margin-bottom:10px">Para comprar una, debes dar click en el boton correspondiente de cada Membersia.</div>
+      <h2>Membersias</h2>
+      <p style="color:var(--muted)">Para comprar, hacé clic en el botón correspondiente.</p>
 
       <div class="memberships">
-        <!-- Membresía 1 -->
-        <div class="card" aria-label="Membresía 1 - 50 Robux">
+
+        <div class="card">
           <h3>Membresía 1 <span class="badge">Nivel 1</span></h3>
           <div class="price">50 Robux</div>
-          <p>Beneficios: Se le acreditaran $40,000 a la economia + un rol especial de <strong>Membersia 1<strong>.</p>
-          <!-- LINK A LA GAME-PASS EN ROBLOX (50 Robux) -->
-          <a class="buy-btn" href="https://www.roblox.com/game-pass/954298347" target="_blank" rel="noopener">Comprar</a>
+          <p>Beneficios: $40,000 + rol <strong>Membresía 1</strong>.</p>
+          <a class="buy-btn" href="https://www.roblox.com/game-pass/954298347" target="_blank">Comprar</a>
         </div>
 
-        <!-- Membresía 2 -->
-        <div class="card" aria-label="Membresía 2 - 100 Robux">
+        <div class="card">
           <h3>Membresía 2 <span class="badge">Nivel 2</span></h3>
           <div class="price">100 Robux</div>
-          <p>Beneficios: Se le acreditarán $100,000 a la economia + un rol especial de <strong>Membersia 2<strong> + posibilidad de enviar imagenes en un canal de "Chat" + Chat y sorteos exclusivos.</p>
-          <!-- LINK A LA GAME-PASS EN ROBLOX (100 Robux) -->
-          <a class="buy-btn" href="https://www.roblox.com/game-pass/854716479" target="_blank" rel="noopener">Comprar</a>
+          <p>Beneficios: $100,000 + rol <strong>Membresía 2</strong> + enviar imágenes + sorteos exclusivos.</p>
+          <a class="buy-btn" href="https://www.roblox.com/game-pass/854716479" target="_blank">Comprar</a>
         </div>
 
-        <!-- Membresía 3 -->
-        <div class="card" aria-label="Membresía 3 - 250 Robux">
+        <div class="card">
           <h3>Membresía 3 <span class="badge">VIP</span></h3>
           <div class="price">250 Robux</div>
-          <p>Beneficios: Se le acreditarán $175,000 a la ecnomia + un rol especial de <strong>Membersia 3<strong> + Acceso a 1 trabajo + Cupo de facción ilegal </strong>.</p>
-          <!-- LINK A LA GAME-PASS EN ROBLOX (250 Robux) -->
-          <a class="buy-btn" href="https://www.roblox.com/game-pass/854400540" target="_blank" rel="noopener">Comprar</a>
+          <p>Beneficios: $175,000 + rol <strong>Membresía 3</strong> + 1 trabajo + cupo facción ilegal.</p>
+          <a class="buy-btn" href="https://www.roblox.com/game-pass/854400540" target="_blank">Comprar</a>
         </div>
 
-        <!-- Membresía 4 -->
-        <div class="card" aria-label="Membresía 4 - 500 Robux">
+        <div class="card">
           <h3>Membresía 4 <span class="badge">Patrocinador</span></h3>
           <div class="price">500 Robux</div>
-          <p>Beneficios: Se le acreditarán $250,000 a la economia + todo lo mencionado anteriormente + Cupo de Empresa gratis.</p>
-          <!-- LINK A LA GAME-PASS EN ROBLOX (500 Robux) -->
-          <a class="buy-btn" href="https://www.roblox.com/game-pass/854768466" target="_blank" rel="noopener">Comprar</a>
+          <p>Beneficios: $250,000 + todo lo anterior + cupo empresa gratis.</p>
+          <a class="buy-btn" href="https://www.roblox.com/game-pass/854768466" target="_blank">Comprar</a>
         </div>
+
       </div>
     </section>
 
     <footer>
-      © <span id="anio"></span> Argentina RP ┊ ER:LC — Programador @vladimirfernan. · 
+      © <span id="anio"></span> Argentina RP ┊ ER:LC — Programador @vladimirfernan
     </footer>
   </div>
 
-  <!-- ====== SCRIPTS ====== -->
-  <script>
-    // Año en el footer
-    document.getElementById('anio').textContent = new Date().getFullYear();
+<script>
+  document.getElementById('anio').textContent = new Date().getFullYear();
+</script>
 
-    // Asignar enlaces editables (ya vienen precargados con los links que me pasaste)
-    const normBtn = document.getElementById('normativas-link');
-    const normMobile = document.getElementById('normativas-link-mob');
-    const normLink = normBtn.getAttribute('data-norm-link');
-    normBtn.href = normLink;
-    if(normMobile) normMobile.href = normLink;
-
-    const robloxBtn = document.getElementById('roblox-link');
-    const robloxMobile = document.getElementById('roblox-link-mob');
-    const robloxLink = robloxBtn.getAttribute('data-roblox-link');
-    robloxBtn.href = robloxLink;
-    if(robloxMobile) robloxMobile.href = robloxLink;
-
-    const discordBtn = document.getElementById('discord-link');
-    const discordMobile = document.getElementById('discord-link-mob');
-    const discordLink = discordBtn.getAttribute('data-discord-link');
-    discordBtn.href = discordLink;
-    if(discordMobile) discordMobile.href = discordLink;
-
-    // Botón del hero
-    const btnJoin = document.getElementById('btn-join');
-    btnJoin.href = discordLink;
-
-    // Footer discord
-    const discordFooter = document.getElementById('discord-footer');
-    discordFooter.href = discordLink;
-
-    // Mobile menu toggler
-    const mobileToggle = document.getElementById('mobile-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    mobileToggle?.addEventListener('click', () => {
-      mobileMenu.classList.toggle('show');
-    });
-
-    // Smooth scroll for internal anchors
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', function(e){
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
-      });
-    });
-
-    // ================= PARTICULAS LIGERAS EN CANVAS =================
-    (function(){
-      const canvas = document.getElementById('bg-canvas');
-      if(!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let w = canvas.width = innerWidth;
-      let h = canvas.height = innerHeight;
-      const particles = [];
-      const COUNT = Math.min(140, Math.floor((w*h)/7200));
-      const colors = ['rgba(255,255,255,0.035)', 'rgba(36,160,255,0.06)', 'rgba(255,107,53,0.045)'];
-
-      function rand(a,b){ return Math.random()*(b-a)+a; }
-      for(let i=0;i<COUNT;i++){
-        particles.push({
-          x: rand(0,w),
-          y: rand(0,h),
-          r: rand(0.6,2.5),
-          vx: rand(-0.2,0.4),
-          vy: rand(-0.1,0.3),
-          col: colors[Math.floor(Math.random()*colors.length)],
-          life: rand(80,350),
-          ttl: 0
-        });
-      }
-      window.addEventListener('resize', ()=>{ w=canvas.width=innerWidth; h=canvas.height=innerHeight; });
-
-      const mouse = {x:-9999,y:-9999};
-      window.addEventListener('mousemove', e=>{ mouse.x=e.clientX; mouse.y=e.clientY; });
-      window.addEventListener('mouseout', ()=>{ mouse.x=-9999; mouse.y=-9999; });
-
-      function draw(){
-        ctx.clearRect(0,0,w,h);
-        // overlay oscuro sutil
-        ctx.fillStyle = 'rgba(3,6,10,0.45)';
-        ctx.fillRect(0,0,w,h);
-
-        particles.forEach(p=>{
-          p.x += p.vx;
-          p.y -= p.vy;
-          p.ttl++;
-          if(p.x<-20 || p.x>w+20 || p.y<-20 || p.y>h+20 || p.ttl>p.life){
-            p.x = rand(0,w); p.y = h + rand(0,40); p.ttl=0;
-            p.vx = rand(-0.2,0.4); p.vy = rand(-0.1,0.3); p.r = rand(0.6,2.5);
-          }
-
-          // interacción con mouse (suave)
-          const dx = p.x - mouse.x, dy = p.y - mouse.y;
-          const dist = Math.sqrt(dx*dx + dy*dy);
-          if(dist < 90){
-            p.x += dx/dist * 0.6;
-            p.y += dy/dist * 0.6;
-          }
-
-          ctx.beginPath();
-          ctx.fillStyle = p.col;
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-          ctx.fill();
-        });
-
-        requestAnimationFrame(draw);
-      }
-      draw();
-    })();
-
-    // ======= PEQUEÑA ANIMACIÓN AL SCROLL (reveal) =======
-    const reveal = () => {
-      const els = document.querySelectorAll('.card, .hero-card, .info');
-      const fromTop = window.scrollY + window.innerHeight;
-      els.forEach(el => {
-        if(el.getBoundingClientRect().top + window.scrollY < fromTop - 60){
-          el.style.opacity = 1;
-          el.style.transform = 'translateY(0)';
-        } else {
-          el.style.opacity = 0;
-          el.style.transform = 'translateY(18px)';
-        }
-      });
-    };
-    window.addEventListener('scroll', reveal);
-    window.addEventListener('load', () => {
-      // preparar reveal initial
-      document.querySelectorAll('.card, .hero-card, .info').forEach(el => {
-        el.style.transition = 'all .6s cubic-bezier(.16,.8,.25,1)';
-        el.style.opacity = 0;
-        el.style.transform = 'translateY(18px)';
-      });
-      reveal();
-    });
-  </script>
 </body>
 </html>
-
